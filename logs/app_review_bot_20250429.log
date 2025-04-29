@@ -72,3 +72,300 @@
 2025-04-29 17:48:27,697 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T17:48:27.697451
 2025-04-29 17:48:27,909 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
 2025-04-29 17:48:27,909 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: '>=' not supported between instances of 'datetime.datetime' and 'float'
+2025-04-29 18:06:21,990 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 18:06:21,990 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 18:06:21,992 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 18:06:21,992 - __main__ - INFO - Database initialized successfully
+2025-04-29 18:06:22,046 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 18:06:22,046 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 18:06:25,297 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 18:06:25,297 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T18:06:25.297733
+2025-04-29 18:06:25,559 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 18:06:25,559 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: '>=' not supported between instances of 'datetime.datetime' and 'float'
+2025-04-29 18:09:45,708 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 18:09:45,708 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 18:09:45,709 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 18:09:45,709 - __main__ - INFO - Database initialized successfully
+2025-04-29 18:09:45,752 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 18:09:45,752 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 18:09:49,775 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 18:09:49,776 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T18:09:49.776144
+2025-04-29 18:09:49,979 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 18:09:49,979 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: '>=' not supported between instances of 'datetime.datetime' and 'float'
+2025-04-29 18:10:06,486 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 18:10:06,487 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 18:10:06,487 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 18:10:06,487 - __main__ - INFO - Database initialized successfully
+2025-04-29 18:10:06,531 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 18:10:06,531 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 18:10:10,021 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 18:10:10,021 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T18:10:10.021631
+2025-04-29 18:10:10,283 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 18:10:10,283 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: '>=' not supported between instances of 'datetime.datetime' and 'float'
+2025-04-29 18:13:49,370 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 18:13:49,371 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 18:13:49,372 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 18:13:49,372 - __main__ - INFO - Database initialized successfully
+2025-04-29 18:13:49,418 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 18:13:49,418 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 18:13:52,557 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 18:13:52,557 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T18:13:52.557538 (timestamp: 1745316832.0)
+2025-04-29 18:13:52,814 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 18:13:52,814 - scraper.google_play_scraper - ERROR - Error processing review ffcd4bf4-a728-42c8-9d37-1ee9c9b2a9a0: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,814 - scraper.google_play_scraper - ERROR - Error processing review 7fd56ffc-54ce-4974-9c68-a913cdcd4fe6: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 20a9d207-2430-4a39-b9b1-b81da4609c81: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review a937cb82-3227-45df-b73c-06ed0377e08f: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review c4736a9d-b543-4f4c-9279-327b8ed64688: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 29dcd5c6-eaf5-4e26-b9b9-88ee31fd7d06: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 3ead8a03-0b55-4b3a-9cc0-03b9411bbeca: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 4898a4cb-5418-4565-b7be-f1e10eb1581a: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review d0af8a8e-067d-41a1-952e-e430a0767ec1: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review f60c3826-02d2-4438-a594-40355fed47ee: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 5283ee19-9de7-4015-a64f-32bc40abd9cf: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review f56b378a-cbdd-448f-9c02-7371c385520c: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 6938f7ed-0b33-4916-8223-2467d2f7cc38: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 8759f848-83c3-45a5-9b2a-4fe3125e723c: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 48d8235f-4f16-4ed5-a7cb-e7274dcc37d8: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 8557e1a3-785a-4620-816d-3b177c9cbafc: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,815 - scraper.google_play_scraper - ERROR - Error processing review 7e91e1d9-4dfb-4b46-a5a9-1cb341a7c8c1: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 1c63d9cb-bb4a-4576-b17f-b5845d331f14: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 10286a8b-ed8b-49b2-bcc4-6e4c322e6399: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 04d84cd0-c24e-4829-9d95-05aa9f848d2f: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review c9567e25-e3f7-4ffe-8d32-71af9755f5ee: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review c361d4ce-7c8e-4f03-b1d4-be47e6f2e4a9: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 6518f550-f8bc-4ae0-8b4a-cb207236e1d2: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review fa277e69-2eb8-4b81-94b7-3cada4fccced: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 422c372c-bec3-47b6-9a14-772c8b89c1bc: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review cc46235c-6af4-49bf-b357-75d396476257: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review dae12744-06a3-4db6-9c74-869dfd638cb0: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review ac2ac0ae-1a0b-40f7-8333-21330aae34be: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 9c8ec0da-5050-415b-92e4-c511103be777: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 02e5c3a6-5eca-43d0-8c2d-3bbb28972044: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 083c58cd-2d89-456e-919b-4eae17e43e96: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review fa329daa-f68f-4c26-93ba-9c7cd201e689: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review ccb13729-9d65-4b1b-b6b6-0d6772db1a29: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 6cf2b7dd-0360-4d11-b4db-7362222d6bf1: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review a84e52fa-d4cd-40bd-b252-5e9a0ded6b38: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,816 - scraper.google_play_scraper - ERROR - Error processing review 718fd51f-1612-49ae-a708-97637d919d7e: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review fb20d6fb-5561-41ff-b1bb-3c2f2c7b7c54: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 847ac301-2868-4f3f-8795-e747a9a5ed66: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 4f3feea1-e78f-4349-b1d5-53c432e43f30: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 0781b942-6be3-4f0d-ba0e-6c2495f90d5e: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 8ac6c7c2-74ff-4a65-8428-1d7002b12658: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 9828f40c-6f36-427c-b49a-f5f8df42268d: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review c377ef6b-7d04-4df1-bcd6-a330833502e6: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 812f3ea8-db15-4b15-843b-7110fd38dcb7: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 5d7df6fe-2b32-4aa8-b803-4a5ae664e7ab: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 4aa308ba-0417-406a-b512-61e414b65e3c: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review dab96ca1-4c9f-4481-8df1-925682d9de7c: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 448fbaf0-2d7f-414e-8b95-d957d6833077: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 0fbf367b-e4d9-40e4-8069-483079824170: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 3257447d-39e7-4345-b57d-e764f5ece36c: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review e34318d4-b4ec-4a42-a6d4-c66673ffbf00: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 5778cb8b-9ecf-4bcf-b35d-f91ac5752213: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review c7ee25e6-6e3c-4ac8-b8d2-99104fec691e: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review fa209c33-d073-41d1-a7f7-5ca9e6520b09: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 095eca63-7e41-461d-9c9b-3eaab0f5aa84: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 97639f1d-81ec-4265-ab73-58a563c89674: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,817 - scraper.google_play_scraper - ERROR - Error processing review 50c6f130-c271-41c5-a9bc-813016f86a94: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 186fea46-23f4-4176-be64-c1d483422b8e: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 58032cad-f5fd-4ef3-b2f4-8345643047a8: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 25e81d00-4329-46ab-8a34-62ba4bca7a9c: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 9137f110-00ca-496f-a3dc-d2c9c0190737: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 41bc7988-56be-4cb2-9e27-3c32238e97d4: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 3b9065d3-1295-4996-8983-d4253b31c003: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 1d999cb3-6ca0-437e-8ab0-c48d70f7902d: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 718e73c1-4f2a-4002-91b5-1a4ab5fed135: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 8fde8db0-0fdb-4462-bfca-f2d6553f4031: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 6e19d2df-73d9-4bef-a0d1-1a0708d84d8e: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review f9dfc663-706a-41ca-bbc8-1ce573ecbbc3: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 3fe82983-258c-4a0b-bf9b-071c76fca1e7: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 14d574b0-55da-4c67-95b8-7b8935199cc9: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 8f085560-3807-4c8d-9865-c8fb55b806b7: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review aa7b8b13-935c-4ae6-92cf-f8f13030860c: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,818 - scraper.google_play_scraper - ERROR - Error processing review 7c935f8f-8bde-45d4-8b12-c28fae932f82: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review 19aa4c65-5c1a-413a-8e4a-2ac8755e4c7a: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review d7492131-c047-45ab-af6f-d1f2c8e6ebaf: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review 7208e4b4-a192-4623-89b2-1f0b4b408fb1: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review 2d45e8b9-c18c-4b61-97ed-edfac9de2ed2: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review e8bb08b1-1f75-4799-8d99-ee1dd5f7e695: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review 8c4dcffd-a38e-4802-9d13-634ae8fc60fd: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review b23401a2-0ef0-48c9-9a5f-087428fc5a46: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review 70490804-73be-492d-a904-b4dddf10ddde: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review 0b0f8b71-df6f-43f5-8ad0-55fd8e14d001: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review 79fc584f-77e4-4560-83ba-4cbd963a5ccf: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review dd60a4d1-330b-4bbf-ab18-06017748f309: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,819 - scraper.google_play_scraper - ERROR - Error processing review 1c8fe748-f94c-4025-a72c-ecc541093fca: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,821 - scraper.google_play_scraper - ERROR - Error processing review a950d55e-12e5-40d5-b25e-8effb6842896: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,821 - scraper.google_play_scraper - ERROR - Error processing review ee8d2efc-8c56-4875-93a3-8c93603c9976: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,821 - scraper.google_play_scraper - ERROR - Error processing review 89022b44-896a-4146-a7ea-9bf26cec2c8a: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,821 - scraper.google_play_scraper - ERROR - Error processing review 90620605-ae6c-4ee2-acfa-8a1363993b6c: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,821 - scraper.google_play_scraper - ERROR - Error processing review 5bf4dac5-9ae2-4416-b03e-a37466ec0114: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review f0e99ad9-2381-4ed8-89f2-cc8ae44e39c4: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review 8e6554e4-5aef-45f6-b86f-497d2628846b: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review 7fff7716-1114-4bd0-9635-94eb0f571432: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review 3297d6fa-4c29-4e88-a6a4-441f853895de: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review ad1af843-77af-44a0-ba75-695a98a6cff9: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review d285c161-e84f-48db-ae4f-b7e2774ecbfc: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review 77539bfe-b90c-45c6-a14f-32e5ca9c6556: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review 373bf4aa-d0ad-4a00-9bbd-3c89a50a5a1f: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review 0149e7c5-8d67-4bc7-bf00-0c2043b2e2be: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,822 - scraper.google_play_scraper - ERROR - Error processing review 4454a511-1a98-4436-a89b-9382c1a6d5f9: float() argument must be a string or a real number, not 'datetime.datetime'
+2025-04-29 18:13:52,823 - scraper.google_play_scraper - INFO - Review fetch complete. Total new reviews saved: 0
+2025-04-29 18:14:44,478 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 18:14:44,479 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 18:14:44,479 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 18:14:44,479 - __main__ - INFO - Database initialized successfully
+2025-04-29 18:14:44,528 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 18:14:44,528 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 18:14:47,419 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 18:14:47,419 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T18:14:47.419317 (timestamp: 1745316887.0)
+2025-04-29 18:14:47,658 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 18:14:47,659 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-28 13:17:58 to timestamp 1745817478.0
+2025-04-29 18:14:47,662 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-28 08:33:13 to timestamp 1745800393.0
+2025-04-29 18:14:47,664 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-28 07:15:11 to timestamp 1745795711.0
+2025-04-29 18:14:47,665 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-27 19:55:21 to timestamp 1745754921.0
+2025-04-29 18:14:47,667 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-27 12:08:21 to timestamp 1745726901.0
+2025-04-29 18:14:47,668 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 23:52:49 to timestamp 1745682769.0
+2025-04-29 18:14:47,669 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 23:51:28 to timestamp 1745682688.0
+2025-04-29 18:14:47,670 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 21:35:45 to timestamp 1745674545.0
+2025-04-29 18:14:47,671 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 17:57:31 to timestamp 1745661451.0
+2025-04-29 18:14:47,672 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 10:27:02 to timestamp 1745634422.0
+2025-04-29 18:14:47,673 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 09:43:36 to timestamp 1745631816.0
+2025-04-29 18:14:47,674 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 19:32:51 to timestamp 1745580771.0
+2025-04-29 18:14:47,675 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 15:32:57 to timestamp 1745566377.0
+2025-04-29 18:14:47,676 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 14:12:29 to timestamp 1745561549.0
+2025-04-29 18:14:47,677 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 14:03:59 to timestamp 1745561039.0
+2025-04-29 18:14:47,678 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 13:19:50 to timestamp 1745558390.0
+2025-04-29 18:14:47,679 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 13:14:09 to timestamp 1745558049.0
+2025-04-29 18:14:47,680 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 12:58:57 to timestamp 1745557137.0
+2025-04-29 18:14:47,681 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 12:45:31 to timestamp 1745556331.0
+2025-04-29 18:14:47,682 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 12:07:56 to timestamp 1745554076.0
+2025-04-29 18:14:47,683 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 11:51:38 to timestamp 1745553098.0
+2025-04-29 18:14:47,684 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 10:34:11 to timestamp 1745548451.0
+2025-04-29 18:14:47,685 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 19:46:31 to timestamp 1745495191.0
+2025-04-29 18:14:47,686 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 18:57:16 to timestamp 1745492236.0
+2025-04-29 18:14:47,686 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 17:48:41 to timestamp 1745488121.0
+2025-04-29 18:14:47,687 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 17:12:11 to timestamp 1745485931.0
+2025-04-29 18:14:47,688 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 16:11:18 to timestamp 1745482278.0
+2025-04-29 18:14:47,689 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 13:25:37 to timestamp 1745472337.0
+2025-04-29 18:14:47,689 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 12:54:16 to timestamp 1745470456.0
+2025-04-29 18:14:47,690 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 12:44:34 to timestamp 1745469874.0
+2025-04-29 18:14:47,691 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 12:03:45 to timestamp 1745467425.0
+2025-04-29 18:14:47,692 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 11:17:20 to timestamp 1745464640.0
+2025-04-29 18:14:47,693 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 11:05:53 to timestamp 1745463953.0
+2025-04-29 18:14:47,694 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 10:45:50 to timestamp 1745462750.0
+2025-04-29 18:14:47,694 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 09:41:53 to timestamp 1745458913.0
+2025-04-29 18:14:47,695 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 09:15:55 to timestamp 1745457355.0
+2025-04-29 18:14:47,696 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 08:34:38 to timestamp 1745454878.0
+2025-04-29 18:14:47,697 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 20:48:32 to timestamp 1745412512.0
+2025-04-29 18:14:47,698 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 18:28:44 to timestamp 1745404124.0
+2025-04-29 18:14:47,698 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 18:03:57 to timestamp 1745402637.0
+2025-04-29 18:14:47,699 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 16:40:42 to timestamp 1745397642.0
+2025-04-29 18:14:47,700 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 16:37:21 to timestamp 1745397441.0
+2025-04-29 18:14:47,701 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 16:08:00 to timestamp 1745395680.0
+2025-04-29 18:14:47,701 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 15:51:04 to timestamp 1745394664.0
+2025-04-29 18:14:47,702 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 15:41:10 to timestamp 1745394070.0
+2025-04-29 18:14:47,703 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 15:25:23 to timestamp 1745393123.0
+2025-04-29 18:14:47,704 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 14:07:39 to timestamp 1745388459.0
+2025-04-29 18:14:47,704 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 14:06:39 to timestamp 1745388399.0
+2025-04-29 18:14:47,705 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 14:00:55 to timestamp 1745388055.0
+2025-04-29 18:14:47,706 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:48:41 to timestamp 1745387321.0
+2025-04-29 18:14:47,706 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:37:18 to timestamp 1745386638.0
+2025-04-29 18:14:47,707 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:32:40 to timestamp 1745386360.0
+2025-04-29 18:14:47,707 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:29:38 to timestamp 1745386178.0
+2025-04-29 18:14:47,708 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:05:38 to timestamp 1745384738.0
+2025-04-29 18:14:47,709 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:36:11 to timestamp 1745382971.0
+2025-04-29 18:14:47,709 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:27:27 to timestamp 1745382447.0
+2025-04-29 18:14:47,710 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:24:31 to timestamp 1745382271.0
+2025-04-29 18:14:47,710 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:23:33 to timestamp 1745382213.0
+2025-04-29 18:14:47,711 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:21:07 to timestamp 1745382067.0
+2025-04-29 18:14:47,712 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:05:33 to timestamp 1745381133.0
+2025-04-29 18:14:47,712 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 11:29:51 to timestamp 1745378991.0
+2025-04-29 18:14:47,713 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 08:37:17 to timestamp 1745368637.0
+2025-04-29 18:14:47,714 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 08:14:36 to timestamp 1745367276.0
+2025-04-29 18:14:47,714 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-22 21:13:25 to timestamp 1745327605.0
+2025-04-29 18:14:47,715 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-22 13:33:44 to timestamp 1745300024.0
+2025-04-29 18:14:47,715 - scraper.google_play_scraper - INFO - Found review older than cutoff date. Review timestamp: 1745300024.0, cutoff: 1745316887.0
+2025-04-29 18:14:47,715 - scraper.google_play_scraper - INFO - Review fetch complete. Total new reviews saved: 64
+2025-04-29 18:16:20,256 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 18:16:20,257 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T18:16:20.256961 (timestamp: 1745316980.0)
+2025-04-29 18:16:20,448 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 18:16:20,448 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-28 13:17:58 to timestamp 1745817478.0
+2025-04-29 18:16:20,452 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-28 08:33:13 to timestamp 1745800393.0
+2025-04-29 18:16:20,453 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-28 07:15:11 to timestamp 1745795711.0
+2025-04-29 18:16:20,454 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-27 19:55:21 to timestamp 1745754921.0
+2025-04-29 18:16:20,456 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-27 12:08:21 to timestamp 1745726901.0
+2025-04-29 18:16:20,457 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 23:52:49 to timestamp 1745682769.0
+2025-04-29 18:16:20,459 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 23:51:28 to timestamp 1745682688.0
+2025-04-29 18:16:20,460 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 21:35:45 to timestamp 1745674545.0
+2025-04-29 18:16:20,461 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 17:57:31 to timestamp 1745661451.0
+2025-04-29 18:16:20,462 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 10:27:02 to timestamp 1745634422.0
+2025-04-29 18:16:20,463 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-26 09:43:36 to timestamp 1745631816.0
+2025-04-29 18:16:20,464 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 19:32:51 to timestamp 1745580771.0
+2025-04-29 18:16:20,465 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 15:32:57 to timestamp 1745566377.0
+2025-04-29 18:16:20,466 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 14:12:29 to timestamp 1745561549.0
+2025-04-29 18:16:20,467 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 14:03:59 to timestamp 1745561039.0
+2025-04-29 18:16:20,468 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 13:19:50 to timestamp 1745558390.0
+2025-04-29 18:16:20,469 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 13:14:09 to timestamp 1745558049.0
+2025-04-29 18:16:20,470 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 12:58:57 to timestamp 1745557137.0
+2025-04-29 18:16:20,471 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 12:45:31 to timestamp 1745556331.0
+2025-04-29 18:16:20,472 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 12:07:56 to timestamp 1745554076.0
+2025-04-29 18:16:20,473 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 11:51:38 to timestamp 1745553098.0
+2025-04-29 18:16:20,474 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-25 10:34:11 to timestamp 1745548451.0
+2025-04-29 18:16:20,475 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 19:46:31 to timestamp 1745495191.0
+2025-04-29 18:16:20,475 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 18:57:16 to timestamp 1745492236.0
+2025-04-29 18:16:20,476 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 17:48:41 to timestamp 1745488121.0
+2025-04-29 18:16:20,477 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 17:12:11 to timestamp 1745485931.0
+2025-04-29 18:16:20,478 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 16:11:18 to timestamp 1745482278.0
+2025-04-29 18:16:20,479 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 13:25:37 to timestamp 1745472337.0
+2025-04-29 18:16:20,480 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 12:54:16 to timestamp 1745470456.0
+2025-04-29 18:16:20,480 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 12:44:34 to timestamp 1745469874.0
+2025-04-29 18:16:20,481 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 12:03:45 to timestamp 1745467425.0
+2025-04-29 18:16:20,482 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 11:17:20 to timestamp 1745464640.0
+2025-04-29 18:16:20,483 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 11:05:53 to timestamp 1745463953.0
+2025-04-29 18:16:20,483 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 10:45:50 to timestamp 1745462750.0
+2025-04-29 18:16:20,484 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 09:41:53 to timestamp 1745458913.0
+2025-04-29 18:16:20,485 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 09:15:55 to timestamp 1745457355.0
+2025-04-29 18:16:20,485 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-24 08:34:38 to timestamp 1745454878.0
+2025-04-29 18:16:20,486 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 20:48:32 to timestamp 1745412512.0
+2025-04-29 18:16:20,487 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 18:28:44 to timestamp 1745404124.0
+2025-04-29 18:16:20,487 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 18:03:57 to timestamp 1745402637.0
+2025-04-29 18:16:20,488 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 16:40:42 to timestamp 1745397642.0
+2025-04-29 18:16:20,489 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 16:37:21 to timestamp 1745397441.0
+2025-04-29 18:16:20,489 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 16:08:00 to timestamp 1745395680.0
+2025-04-29 18:16:20,490 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 15:51:04 to timestamp 1745394664.0
+2025-04-29 18:16:20,491 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 15:41:10 to timestamp 1745394070.0
+2025-04-29 18:16:20,492 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 15:25:23 to timestamp 1745393123.0
+2025-04-29 18:16:20,492 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 14:07:39 to timestamp 1745388459.0
+2025-04-29 18:16:20,492 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 14:06:39 to timestamp 1745388399.0
+2025-04-29 18:16:20,493 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 14:00:55 to timestamp 1745388055.0
+2025-04-29 18:16:20,493 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:48:41 to timestamp 1745387321.0
+2025-04-29 18:16:20,494 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:37:18 to timestamp 1745386638.0
+2025-04-29 18:16:20,494 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:32:40 to timestamp 1745386360.0
+2025-04-29 18:16:20,494 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:29:38 to timestamp 1745386178.0
+2025-04-29 18:16:20,495 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 13:05:38 to timestamp 1745384738.0
+2025-04-29 18:16:20,496 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:36:11 to timestamp 1745382971.0
+2025-04-29 18:16:20,496 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:27:27 to timestamp 1745382447.0
+2025-04-29 18:16:20,497 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:24:31 to timestamp 1745382271.0
+2025-04-29 18:16:20,498 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:23:33 to timestamp 1745382213.0
+2025-04-29 18:16:20,499 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:21:07 to timestamp 1745382067.0
+2025-04-29 18:16:20,499 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 12:05:33 to timestamp 1745381133.0
+2025-04-29 18:16:20,500 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 11:29:51 to timestamp 1745378991.0
+2025-04-29 18:16:20,501 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 08:37:17 to timestamp 1745368637.0
+2025-04-29 18:16:20,501 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-23 08:14:36 to timestamp 1745367276.0
+2025-04-29 18:16:20,502 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-22 21:13:25 to timestamp 1745327605.0
+2025-04-29 18:16:20,502 - scraper.google_play_scraper - INFO - Converted datetime 2025-04-22 13:33:44 to timestamp 1745300024.0
+2025-04-29 18:16:20,502 - scraper.google_play_scraper - INFO - Found review older than cutoff date. Review timestamp: 1745300024.0, cutoff: 1745316980.0
+2025-04-29 18:16:20,503 - scraper.google_play_scraper - INFO - Review fetch complete. Total new reviews saved: 64
+2025-04-29 18:19:39,330 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 18:19:39,331 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 18:19:39,331 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 18:19:39,331 - __main__ - INFO - Database initialized successfully
+2025-04-29 18:19:39,379 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 18:19:39,379 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 18:19:42,604 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 18:19:42,604 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T18:19:42.604299
+2025-04-29 18:19:42,795 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 18:19:42,845 - scraper.google_play_scraper - INFO - Found review older than cutoff date
+2025-04-29 18:19:42,845 - scraper.google_play_scraper - INFO - Review fetch complete. Total new reviews saved: 64
