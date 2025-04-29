@@ -1,0 +1,74 @@
+2025-04-29 17:24:18,874 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 17:24:18,875 - utils.config - INFO - Created default config.json file
+2025-04-29 17:24:18,875 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 17:24:18,879 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 17:24:18,879 - __main__ - INFO - Database initialized successfully
+2025-04-29 17:24:18,925 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 17:24:18,925 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 17:24:55,845 - bot.commands - INFO - User 5910794110 started the bot
+2025-04-29 17:31:37,920 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 17:31:37,920 - __main__ - INFO - Created directory: data
+2025-04-29 17:31:37,921 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 17:31:37,921 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 17:31:37,921 - __main__ - INFO - Database initialized successfully
+2025-04-29 17:31:37,967 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 17:31:37,967 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 17:31:56,061 - bot.commands - INFO - User 5910794110 started the bot
+2025-04-29 17:32:00,381 - bot.telegram_bot - ERROR - Update Update(message=Message(channel_chat_created=False, chat=Chat(first_name='Luis', id=5910794110, last_name='cabba', type=<ChatType.PRIVATE>, username='luiscab_ba'), date=datetime.datetime(2025, 4, 29, 9, 32, tzinfo=datetime.timezone.utc), delete_chat_photo=False, entities=(MessageEntity(length=8, offset=0, type=<MessageEntityType.BOT_COMMAND>),), from_user=User(first_name='Luis', id=5910794110, is_bot=False, language_code='en', last_name='cabba', username='luiscab_ba'), group_chat_created=False, message_id=53, supergroup_chat_created=False, text='/process'), update_id=13047634) caused error No module named 'google_play_scraper'
+2025-04-29 17:33:18,858 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 17:33:18,858 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 17:33:18,860 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 17:33:18,860 - __main__ - INFO - Database initialized successfully
+2025-04-29 17:33:18,911 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 17:33:18,911 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 17:33:26,551 - bot.commands - INFO - User 5910794110 started the bot
+2025-04-29 17:33:30,122 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 17:33:30,433 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 17:33:30,434 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: 'datetime.datetime' object cannot be interpreted as an integer
+2025-04-29 17:34:31,692 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 17:34:31,693 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 17:34:31,694 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 17:34:31,694 - __main__ - INFO - Database initialized successfully
+2025-04-29 17:34:31,740 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 17:34:31,740 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 17:34:35,988 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 17:34:36,258 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 17:34:36,258 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: 'datetime.datetime' object cannot be interpreted as an integer
+2025-04-29 17:34:51,033 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 17:34:51,033 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 17:34:51,034 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 17:34:51,034 - __main__ - INFO - Database initialized successfully
+2025-04-29 17:34:51,078 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 17:34:51,078 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 17:34:56,972 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 17:34:57,181 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 17:34:57,181 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: 'datetime.datetime' object cannot be interpreted as an integer
+2025-04-29 17:35:42,330 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 17:35:42,331 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 17:35:42,331 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 17:35:42,331 - __main__ - INFO - Database initialized successfully
+2025-04-29 17:35:42,380 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 17:35:42,380 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 17:35:46,088 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 17:35:46,302 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 17:35:46,302 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: '<' not supported between instances of 'datetime.datetime' and 'float'
+2025-04-29 17:36:34,684 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 17:36:34,685 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 17:36:34,685 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 17:36:34,685 - __main__ - INFO - Database initialized successfully
+2025-04-29 17:36:34,732 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 17:36:34,732 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 17:36:37,886 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 17:36:37,887 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T17:36:37.887188
+2025-04-29 17:36:38,115 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 17:36:38,115 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: '>=' not supported between instances of 'datetime.datetime' and 'float'
+2025-04-29 17:48:23,813 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-29 17:48:23,813 - __main__ - INFO - Configuration loaded successfully
+2025-04-29 17:48:23,815 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-29 17:48:23,815 - __main__ - INFO - Database initialized successfully
+2025-04-29 17:48:23,862 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-29 17:48:23,862 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-29 17:48:27,697 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 100)
+2025-04-29 17:48:27,697 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-22T17:48:27.697451
+2025-04-29 17:48:27,909 - scraper.google_play_scraper - INFO - Initial fetch: 100 reviews retrieved
+2025-04-29 17:48:27,909 - scraper.google_play_scraper - ERROR - Failed to fetch reviews: '>=' not supported between instances of 'datetime.datetime' and 'float'

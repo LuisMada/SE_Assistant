@@ -1,0 +1,34 @@
+"""
+Telegram bot setup and command handlers
+"""
+import logging
+from telegram import Update
+from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
+from bot.commands import start_command, help_command, report_command, reviews_command, steps_command, process_command
+
+logger = logging.getLogger(__name__)
+
+def setup_bot(config):
+    """Set up the Telegram bot with all command handlers"""
+    # Create the Application
+    app = Application.builder().token(config['TELEGRAM_TOKEN']).build()
+    
+    # Add command handlers
+    app.add_handler(CommandHandler("start", start_command))
+    app.add_handler(CommandHandler("help", help_command))
+    app.add_handler(CommandHandler("report", report_command))
+    app.add_handler(CommandHandler("reviews", reviews_command))
+    app.add_handler(CommandHandler("steps", steps_command))
+    app.add_handler(CommandHandler("process", process_command))
+    
+    # Add error handler
+    app.add_error_handler(error_handler)
+    
+    logger.info("Telegram bot setup complete")
+    return app
+
+async def error_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle errors in the bot"""
+    logger.error(f"Update {update} caused error {context.error}")
+    if update:
+        await update.message.reply_text("Sorry, something went wrong. Please try again later.")
