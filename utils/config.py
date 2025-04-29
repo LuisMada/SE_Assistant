@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_CONFIG = {
     'APP_ID': '',              # Google Play app ID to scrape reviews from
     'DAYS_TO_SCRAPE': 7,       # Number of days in the past to scrape reviews
-    'MAX_REVIEWS': 100,        # Maximum number of reviews to scrape
+    'MAX_REVIEWS': 20,        # Maximum number of reviews to scrape
     'OPENAI_MODEL': 'gpt-3.5-turbo',  # OpenAI model to use for analysis
 }
 
