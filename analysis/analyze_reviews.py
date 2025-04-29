@@ -11,7 +11,7 @@ from database.sqlite_db import get_unprocessed_reviews, DB_PATH
 from analysis.sentiment_analysis import batch_process_reviews
 from analysis.categorization import batch_process_categories
 from analysis.priority_assignment import process_priorities
-from analysis.action_plans import generate_action_plans
+from analysis.action_plans import generate_action_plans, save_action_plans
 
 logger = logging.getLogger(__name__)
 
@@ -71,9 +71,13 @@ def analyze_app_reviews(config: Dict[str, Any]) -> Dict[str, Any]:
         )
         logger.info(f"Assigned priorities to {priorities_processed} reviews")
         
-        # Generate action plans for high-priority issues
+        # Generate action plans for high-priority issues using our new clustered approach
         action_plans = generate_action_plans(conn, api_key)
         logger.info(f"Generated {len(action_plans)} action plans")
+        
+        # Save generated action plans to database
+        if action_plans:
+            save_action_plans(conn, action_plans)
         
         conn.close()
         

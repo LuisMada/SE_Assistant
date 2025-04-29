@@ -1,0 +1,162 @@
+2025-04-30 00:56:30,261 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 00:56:30,262 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 00:56:30,264 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 00:56:30,264 - __main__ - INFO - Database initialized successfully
+2025-04-30 00:56:30,305 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 00:56:30,306 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 00:56:57,118 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 00:56:57,119 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 00:56:57,123 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 00:56:57,123 - __main__ - INFO - Database initialized successfully
+2025-04-30 00:56:57,155 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 00:56:57,155 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 00:57:05,438 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 20)
+2025-04-30 00:57:05,438 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-23T00:57:05.438827
+2025-04-30 00:57:05,642 - scraper.google_play_scraper - INFO - Initial fetch: 20 reviews retrieved
+2025-04-30 00:57:05,670 - scraper.google_play_scraper - INFO - Review fetch complete. Total new reviews saved: 20
+2025-04-30 00:57:06,496 - analysis.analyze_reviews - INFO - Found 20 unprocessed reviews
+2025-04-30 00:57:06,506 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ba7fa799-88ae-4a9c-8dd7-14164a47d77d
+2025-04-30 00:57:09,491 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ffcd4bf4-a728-42c8-9d37-1ee9c9b2a9a0
+2025-04-30 00:57:10,501 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 7fd56ffc-54ce-4974-9c68-a913cdcd4fe6
+2025-04-30 00:57:11,665 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 20a9d207-2430-4a39-b9b1-b81da4609c81
+2025-04-30 00:57:12,808 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review a937cb82-3227-45df-b73c-06ed0377e08f
+2025-04-30 00:57:14,140 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review c4736a9d-b543-4f4c-9279-327b8ed64688
+2025-04-30 00:57:15,684 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 29dcd5c6-eaf5-4e26-b9b9-88ee31fd7d06
+2025-04-30 00:57:16,784 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 3ead8a03-0b55-4b3a-9cc0-03b9411bbeca
+2025-04-30 00:57:18,627 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 4898a4cb-5418-4565-b7be-f1e10eb1581a
+2025-04-30 00:57:19,756 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review d0af8a8e-067d-41a1-952e-e430a0767ec1
+2025-04-30 00:57:21,186 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review f60c3826-02d2-4438-a594-40355fed47ee
+2025-04-30 00:57:22,289 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 5283ee19-9de7-4015-a64f-32bc40abd9cf
+2025-04-30 00:57:24,868 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review f56b378a-cbdd-448f-9c02-7371c385520c
+2025-04-30 00:57:25,916 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 6938f7ed-0b33-4916-8223-2467d2f7cc38
+2025-04-30 00:57:27,125 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 8759f848-83c3-45a5-9b2a-4fe3125e723c
+2025-04-30 00:57:28,254 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 48d8235f-4f16-4ed5-a7cb-e7274dcc37d8
+2025-04-30 00:57:29,441 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 8557e1a3-785a-4620-816d-3b177c9cbafc
+2025-04-30 00:57:30,918 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 7e91e1d9-4dfb-4b46-a5a9-1cb341a7c8c1
+2025-04-30 00:57:32,041 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 1c63d9cb-bb4a-4576-b17f-b5845d331f14
+2025-04-30 00:57:33,177 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 10286a8b-ed8b-49b2-bcc4-6e4c322e6399
+2025-04-30 00:57:34,436 - analysis.sentiment_analysis - INFO - Completed sentiment analysis for 20 reviews
+2025-04-30 00:57:34,440 - analysis.analyze_reviews - INFO - Processed sentiment for 20 reviews, saved 20
+2025-04-30 00:57:34,459 - analysis.categorization - INFO - Categorizing review ba7fa799-88ae-4a9c-8dd7-14164a47d77d
+2025-04-30 00:57:36,753 - analysis.categorization - INFO - Categorizing review ffcd4bf4-a728-42c8-9d37-1ee9c9b2a9a0
+2025-04-30 00:57:38,084 - analysis.categorization - INFO - Categorizing review 7fd56ffc-54ce-4974-9c68-a913cdcd4fe6
+2025-04-30 00:57:39,207 - analysis.categorization - INFO - Categorizing review 20a9d207-2430-4a39-b9b1-b81da4609c81
+2025-04-30 00:57:40,439 - analysis.categorization - INFO - Categorizing review a937cb82-3227-45df-b73c-06ed0377e08f
+2025-04-30 00:57:41,596 - analysis.categorization - INFO - Categorizing review c4736a9d-b543-4f4c-9279-327b8ed64688
+2025-04-30 00:57:43,000 - analysis.categorization - INFO - Categorizing review 29dcd5c6-eaf5-4e26-b9b9-88ee31fd7d06
+2025-04-30 00:57:44,259 - analysis.categorization - INFO - Categorizing review 3ead8a03-0b55-4b3a-9cc0-03b9411bbeca
+2025-04-30 00:57:45,396 - analysis.categorization - INFO - Categorizing review 4898a4cb-5418-4565-b7be-f1e10eb1581a
+2025-04-30 00:57:46,544 - analysis.categorization - INFO - Categorizing review d0af8a8e-067d-41a1-952e-e430a0767ec1
+2025-04-30 00:57:47,686 - analysis.categorization - INFO - Categorizing review f60c3826-02d2-4438-a594-40355fed47ee
+2025-04-30 00:57:48,834 - analysis.categorization - INFO - Categorizing review 5283ee19-9de7-4015-a64f-32bc40abd9cf
+2025-04-30 00:57:50,147 - analysis.categorization - INFO - Categorizing review f56b378a-cbdd-448f-9c02-7371c385520c
+2025-04-30 00:57:51,322 - analysis.categorization - INFO - Categorizing review 6938f7ed-0b33-4916-8223-2467d2f7cc38
+2025-04-30 00:57:52,345 - analysis.categorization - INFO - Categorizing review 8759f848-83c3-45a5-9b2a-4fe3125e723c
+2025-04-30 00:57:53,584 - analysis.categorization - INFO - Categorizing review 48d8235f-4f16-4ed5-a7cb-e7274dcc37d8
+2025-04-30 00:57:55,083 - analysis.categorization - INFO - Categorizing review 8557e1a3-785a-4620-816d-3b177c9cbafc
+2025-04-30 00:57:56,208 - analysis.categorization - INFO - Categorizing review 7e91e1d9-4dfb-4b46-a5a9-1cb341a7c8c1
+2025-04-30 00:57:57,281 - analysis.categorization - INFO - Categorizing review 1c63d9cb-bb4a-4576-b17f-b5845d331f14
+2025-04-30 00:57:58,512 - analysis.categorization - INFO - Categorizing review 10286a8b-ed8b-49b2-bcc4-6e4c322e6399
+2025-04-30 00:58:00,159 - analysis.categorization - INFO - Completed categorization for 20 reviews
+2025-04-30 00:58:00,164 - analysis.analyze_reviews - INFO - Processed categories for 20 reviews, saved 42 category associations
+2025-04-30 00:58:00,167 - analysis.priority_assignment - INFO - Assigned priorities to 20 reviews
+2025-04-30 00:58:00,167 - analysis.analyze_reviews - INFO - Assigned priorities to 20 reviews
+2025-04-30 00:58:00,168 - analysis.action_plans - INFO - Found 10 high priority reviews for action planning
+2025-04-30 00:58:05,230 - analysis.action_plans - INFO - Clustered reviews into 8 themes
+2025-04-30 00:58:05,231 - analysis.action_plans - INFO - Generating action plan for theme: App Loading Issue
+2025-04-30 00:58:07,744 - analysis.action_plans - INFO - Generating action plan for theme: Booking Difficulties
+2025-04-30 00:58:10,145 - analysis.action_plans - INFO - Generating action plan for theme: Poor Customer Service
+2025-04-30 00:58:12,382 - analysis.action_plans - INFO - Generating action plan for theme: Missing Driver Ratings
+2025-04-30 00:58:15,059 - analysis.action_plans - INFO - Generating action plan for theme: Promo Code and Driver Availability Issues
+2025-04-30 00:58:17,410 - analysis.action_plans - INFO - Generating action plan for theme: App Performance and Location Inaccuracy
+2025-04-30 00:58:20,179 - analysis.action_plans - INFO - Generating action plan for theme: App Stability and Saved Locations
+2025-04-30 00:58:22,433 - analysis.action_plans - INFO - Generating action plan for theme: Dishonest Customer Service Representative
+2025-04-30 00:58:25,523 - analysis.analyze_reviews - INFO - Generated 8 action plans
+2025-04-30 00:58:25,523 - analysis.analyze_reviews - ERROR - Error in review analysis pipeline: name 'save_action_plans' is not defined
+2025-04-30 00:59:14,546 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 00:59:14,546 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 00:59:14,551 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 00:59:14,551 - __main__ - INFO - Database initialized successfully
+2025-04-30 00:59:14,724 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 00:59:14,724 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 00:59:19,014 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 20)
+2025-04-30 00:59:19,015 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-23T00:59:19.015067
+2025-04-30 00:59:19,159 - scraper.google_play_scraper - INFO - Initial fetch: 20 reviews retrieved
+2025-04-30 00:59:19,186 - scraper.google_play_scraper - INFO - Review fetch complete. Total new reviews saved: 20
+2025-04-30 00:59:19,966 - analysis.analyze_reviews - INFO - Found 20 unprocessed reviews
+2025-04-30 00:59:19,985 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ba7fa799-88ae-4a9c-8dd7-14164a47d77d
+2025-04-30 00:59:21,834 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ffcd4bf4-a728-42c8-9d37-1ee9c9b2a9a0
+2025-04-30 00:59:22,898 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 7fd56ffc-54ce-4974-9c68-a913cdcd4fe6
+2025-04-30 00:59:24,134 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 20a9d207-2430-4a39-b9b1-b81da4609c81
+2025-04-30 00:59:25,300 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review a937cb82-3227-45df-b73c-06ed0377e08f
+2025-04-30 00:59:26,369 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review c4736a9d-b543-4f4c-9279-327b8ed64688
+2025-04-30 00:59:27,658 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 29dcd5c6-eaf5-4e26-b9b9-88ee31fd7d06
+2025-04-30 00:59:28,723 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 3ead8a03-0b55-4b3a-9cc0-03b9411bbeca
+2025-04-30 00:59:30,113 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 4898a4cb-5418-4565-b7be-f1e10eb1581a
+2025-04-30 00:59:31,134 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review d0af8a8e-067d-41a1-952e-e430a0767ec1
+2025-04-30 00:59:32,269 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review f60c3826-02d2-4438-a594-40355fed47ee
+2025-04-30 00:59:33,513 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 5283ee19-9de7-4015-a64f-32bc40abd9cf
+2025-04-30 00:59:34,633 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review f56b378a-cbdd-448f-9c02-7371c385520c
+2025-04-30 00:59:35,853 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 6938f7ed-0b33-4916-8223-2467d2f7cc38
+2025-04-30 00:59:37,092 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 8759f848-83c3-45a5-9b2a-4fe3125e723c
+2025-04-30 00:59:38,215 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 48d8235f-4f16-4ed5-a7cb-e7274dcc37d8
+2025-04-30 00:59:42,851 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 8557e1a3-785a-4620-816d-3b177c9cbafc
+2025-04-30 00:59:43,908 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 7e91e1d9-4dfb-4b46-a5a9-1cb341a7c8c1
+2025-04-30 00:59:45,186 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 1c63d9cb-bb4a-4576-b17f-b5845d331f14
+2025-04-30 00:59:46,383 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 10286a8b-ed8b-49b2-bcc4-6e4c322e6399
+2025-04-30 00:59:47,468 - analysis.sentiment_analysis - INFO - Completed sentiment analysis for 20 reviews
+2025-04-30 00:59:47,473 - analysis.analyze_reviews - INFO - Processed sentiment for 20 reviews, saved 20
+2025-04-30 00:59:47,492 - analysis.categorization - INFO - Categorizing review ba7fa799-88ae-4a9c-8dd7-14164a47d77d
+2025-04-30 00:59:48,594 - analysis.categorization - INFO - Categorizing review ffcd4bf4-a728-42c8-9d37-1ee9c9b2a9a0
+2025-04-30 00:59:50,000 - analysis.categorization - INFO - Categorizing review 7fd56ffc-54ce-4974-9c68-a913cdcd4fe6
+2025-04-30 00:59:51,129 - analysis.categorization - INFO - Categorizing review 20a9d207-2430-4a39-b9b1-b81da4609c81
+2025-04-30 00:59:52,257 - analysis.categorization - INFO - Categorizing review a937cb82-3227-45df-b73c-06ed0377e08f
+2025-04-30 00:59:53,484 - analysis.categorization - INFO - Categorizing review c4736a9d-b543-4f4c-9279-327b8ed64688
+2025-04-30 00:59:54,613 - analysis.categorization - INFO - Categorizing review 29dcd5c6-eaf5-4e26-b9b9-88ee31fd7d06
+2025-04-30 00:59:55,820 - analysis.categorization - INFO - Categorizing review 3ead8a03-0b55-4b3a-9cc0-03b9411bbeca
+2025-04-30 00:59:57,090 - analysis.categorization - INFO - Categorizing review 4898a4cb-5418-4565-b7be-f1e10eb1581a
+2025-04-30 00:59:58,302 - analysis.categorization - INFO - Categorizing review d0af8a8e-067d-41a1-952e-e430a0767ec1
+2025-04-30 00:59:59,531 - analysis.categorization - INFO - Categorizing review f60c3826-02d2-4438-a594-40355fed47ee
+2025-04-30 01:00:00,661 - analysis.categorization - INFO - Categorizing review 5283ee19-9de7-4015-a64f-32bc40abd9cf
+2025-04-30 01:00:02,595 - analysis.categorization - INFO - Categorizing review f56b378a-cbdd-448f-9c02-7371c385520c
+2025-04-30 01:00:03,900 - analysis.categorization - INFO - Categorizing review 6938f7ed-0b33-4916-8223-2467d2f7cc38
+2025-04-30 01:00:05,058 - analysis.categorization - INFO - Categorizing review 8759f848-83c3-45a5-9b2a-4fe3125e723c
+2025-04-30 01:00:06,187 - analysis.categorization - INFO - Categorizing review 48d8235f-4f16-4ed5-a7cb-e7274dcc37d8
+2025-04-30 01:00:07,418 - analysis.categorization - INFO - Categorizing review 8557e1a3-785a-4620-816d-3b177c9cbafc
+2025-04-30 01:00:08,826 - analysis.categorization - INFO - Categorizing review 7e91e1d9-4dfb-4b46-a5a9-1cb341a7c8c1
+2025-04-30 01:00:10,601 - analysis.categorization - INFO - Categorizing review 1c63d9cb-bb4a-4576-b17f-b5845d331f14
+2025-04-30 01:00:11,671 - analysis.categorization - INFO - Categorizing review 10286a8b-ed8b-49b2-bcc4-6e4c322e6399
+2025-04-30 01:00:12,782 - analysis.categorization - INFO - Completed categorization for 20 reviews
+2025-04-30 01:00:12,784 - analysis.analyze_reviews - INFO - Processed categories for 20 reviews, saved 40 category associations
+2025-04-30 01:00:12,787 - analysis.priority_assignment - INFO - Assigned priorities to 20 reviews
+2025-04-30 01:00:12,787 - analysis.analyze_reviews - INFO - Assigned priorities to 20 reviews
+2025-04-30 01:00:12,788 - analysis.action_plans - INFO - Found 10 high priority reviews for action planning
+2025-04-30 01:00:17,416 - analysis.action_plans - INFO - Clustered reviews into 8 themes
+2025-04-30 01:00:17,416 - analysis.action_plans - INFO - Generating action plan for theme: App Loading Issue
+2025-04-30 01:00:19,812 - analysis.action_plans - INFO - Generating action plan for theme: Booking Difficulties
+2025-04-30 01:00:22,628 - analysis.action_plans - INFO - Generating action plan for theme: Poor Customer Service
+2025-04-30 01:00:25,141 - analysis.action_plans - INFO - Generating action plan for theme: Missing Driver Ratings
+2025-04-30 01:00:27,615 - analysis.action_plans - INFO - Generating action plan for theme: Promo Code and Driver Availability Issues
+2025-04-30 01:00:30,367 - analysis.action_plans - INFO - Generating action plan for theme: App Performance and Location Inaccuracy
+2025-04-30 01:00:34,588 - analysis.action_plans - INFO - Generating action plan for theme: Account and Saved Location Issues
+2025-04-30 01:00:37,127 - analysis.action_plans - INFO - Generating action plan for theme: Dishonest Customer Service Representative
+2025-04-30 01:00:40,033 - analysis.analyze_reviews - INFO - Generated 8 action plans
+2025-04-30 01:00:40,036 - analysis.action_plans - INFO - Saved 8 action plans to database
+2025-04-30 01:01:30,547 - analysis.action_plans - INFO - Found 10 high priority reviews for action planning
+2025-04-30 01:01:35,554 - analysis.action_plans - INFO - Clustered reviews into 8 themes
+2025-04-30 01:01:35,555 - analysis.action_plans - INFO - Generating action plan for theme: App Loading Issue
+2025-04-30 01:01:38,032 - analysis.action_plans - INFO - Generating action plan for theme: Booking Difficulties
+2025-04-30 01:01:41,025 - analysis.action_plans - INFO - Generating action plan for theme: Poor Customer Service
+2025-04-30 01:01:44,345 - analysis.action_plans - INFO - Generating action plan for theme: Missing Driver Ratings
+2025-04-30 01:01:47,473 - analysis.action_plans - INFO - Generating action plan for theme: Promo Code and Driver Availability Issues
+2025-04-30 01:01:50,001 - analysis.action_plans - INFO - Generating action plan for theme: App Performance and Location Inaccuracy
+2025-04-30 01:01:52,844 - analysis.action_plans - INFO - Generating action plan for theme: Account and Saved Location Issues
+2025-04-30 01:01:55,515 - analysis.action_plans - INFO - Generating action plan for theme: Dishonest Customer Service Representative
+2025-04-30 01:02:02,265 - analysis.action_plans - INFO - Saved 8 action plans to database
+2025-04-30 01:02:06,931 - bot.commands - ERROR - Error in steps command: Can't parse entities: can't find end of the entity starting at byte offset 226
+2025-04-30 01:03:31,528 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 01:03:31,529 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 01:03:31,529 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 01:03:31,529 - __main__ - INFO - Database initialized successfully
+2025-04-30 01:03:31,562 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 01:03:31,562 - __main__ - INFO - Bot initialized, starting polling...

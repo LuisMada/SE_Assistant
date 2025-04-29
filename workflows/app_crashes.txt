@@ -1,0 +1,32 @@
+# App Crashes Resolution Workflow
+
+## Issue Description
+Users reporting application crashes, freezes, or unexpected closures during use, often losing data or progress as a result.
+
+## Internal Action Steps
+1. Review crash logs from analytics platform for stack traces and exception types
+2. Check for patterns in device types, OS versions, or app versions experiencing crashes
+3. Analyze memory usage patterns and memory leaks
+4. Review recent code changes that might have introduced instability
+5. Test on devices/configurations matching those in crash reports
+6. Check for third-party SDK/library issues or updates
+
+## Common Fixes
+- Roll back recent problematic code changes
+- Implement memory management improvements
+- Update outdated dependencies or libraries
+- Add additional error handling around crash points
+- Implement graceful degradation for problematic features
+- Release hotfix for critical crash issues
+
+## User Communication Guidelines
+- Acknowledge the frustration of losing progress
+- Be specific about which conditions trigger the crash (if known)
+- Provide clear workarounds if available
+- Set expectations for when a fix will be available
+- Consider compensation for lost progress/data where appropriate
+
+## Contact Points
+- Mobile Dev Team: mobile-dev@example.com
+- QA Testing Team: qa@example.com
+- DevOps/Release: devops@example.com

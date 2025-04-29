@@ -1,8 +1,10 @@
+
 """
 Implementation of Telegram bot commands
 """
 import logging
 import sqlite3
+import json
 from telegram import Update
 from telegram.ext import ContextTypes
 
@@ -10,7 +12,7 @@ from utils.config import load_config
 from scraper.google_play_scraper import fetch_reviews
 from database.sqlite_db import get_unprocessed_reviews, get_recent_reviews, get_reviews_by_priority, DB_PATH
 from analysis.analyze_reviews import analyze_app_reviews
-from analysis.action_plans import get_action_plans
+from analysis.action_plans import get_action_plans, generate_action_plans, get_high_priority_reviews, save_action_plans
 
 logger = logging.getLogger(__name__)
 
@@ -261,71 +263,190 @@ async def reviews_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def steps_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Generate action plans for high-priority issues."""
+    from utils.config import load_config
+    
     try:
+        # Indicate processing has started
+        processing_message = await update.message.reply_text(
+            "🔍 Analyzing high-priority issues and generating action plans..."
+        )
+        
         # Connect to database
         conn = sqlite3.connect(DB_PATH)
         
-        # Get action plans
+        # Get action plans from database
         action_plans = get_action_plans(conn)
         
         # If no action plans, get high priority reviews to give context
         if not action_plans:
-            high_priority_reviews = get_reviews_by_priority(1, limit=5)
-            high_priority_reviews.extend(get_reviews_by_priority(2, limit=3))
+            # Load configuration to get OpenAI API key
+            config = load_config()
+            api_key = config.get('OPENAI_API_KEY')
             
-            if not high_priority_reviews:
-                await update.message.reply_text(
-                    "No high-priority issues found. Either there are no critical issues, or reviews need to be processed first with /process."
+            if not api_key:
+                await processing_message.edit_text(
+                    "⚠️ OpenAI API key not configured. Cannot generate action plans.\n"
+                    "Please set OPENAI_API_KEY in your .env file."
                 )
                 return
                 
-            # Just list the high-priority reviews
-            message = f"🚨 *High Priority Issues*\n\n"
-            message += "No action plans have been generated yet. Use /process to analyze reviews and generate action plans.\n\n"
-            message += "Here are the current high priority issues:\n\n"
+            # Get high priority reviews
+            high_priority_reviews = get_high_priority_reviews(conn)
             
-            for i, review in enumerate(high_priority_reviews, 1):
-                # Format categories
-                categories = review.get('categories', [])
-                categories_text = ", ".join(categories) if categories else "Not categorized"
-                
-                # Priority emoji
-                priority_emoji = "🔴" if review.get('priority_level', 0) == 1 else "🟠"
-                
-                # Format review preview
-                review_text = review['review_text']
-                if len(review_text) > 100:
-                    review_text = review_text[:97] + "..."
-                    
-                # Add to message
-                message += (
-                    f"*Issue {i}:* {priority_emoji} {categories_text}\n"
-                    f"Rating: {'⭐' * review['rating']}\n"
-                    f"_{review_text}_\n\n"
+            if not high_priority_reviews:
+                await processing_message.edit_text(
+                    "ℹ️ No high-priority issues found. Either there are no critical issues, "
+                    "or reviews need to be processed first with /process."
                 )
+                return
+                
+            # Update status
+            await processing_message.edit_text(
+                f"🧩 Found {len(high_priority_reviews)} high-priority reviews. "
+                f"Clustering into themes and generating action plans..."
+            )
             
-            # Check message length and truncate if needed
-            if len(message) > 4000:  # Stay well under Telegram's 4096 limit
-                message = message[:3900] + "...\n\n_Message truncated due to length limit._"
-                
-            await update.message.reply_markdown(message)
-        else:
-            # Format and send action plans
-            header = f"🚨 *Action Plans for High Priority Issues*\n\n"
-            await update.message.reply_markdown(header)
+            # Generate action plans
+            action_plans = generate_action_plans(conn, api_key)
             
-            # Send each action plan as a separate message to avoid length issues
-            for i, plan in enumerate(action_plans, 1):
-                category = plan['category']
-                action_plan = plan['action_plan']
+            # Save action plans to database
+            if action_plans:
+                save_action_plans(conn, action_plans)
+            else:
+                # Just list some high priority reviews if we couldn't generate plans
+                limited_reviews = high_priority_reviews[:5]  # Limit to 5 reviews
                 
-                # Truncate action plan if it's too long
-                if len(action_plan) > 3500:  # Leave room for category and formatting
-                    action_plan = action_plan[:3500] + "...\n\n_Action plan truncated due to length limit._"
+                message = "🚨 *High Priority Issues*\n\n"
+                message += "Could not generate themed action plans. Here are the current high priority issues:\n\n"
                 
-                plan_message = f"*{i}. {category}*\n{action_plan}"
+                for i, review in enumerate(limited_reviews, 1):
+                    # Format categories
+                    categories = review.get('categories', [])
+                    categories_text = ", ".join(categories) if categories else "Not categorized"
+                    
+                    # Priority emoji
+                    priority_emoji = "🔴" if review.get('priority_level', 0) == 1 else "🟠"
+                    
+                    # Format review preview - Ensure proper escaping for markdown
+                    review_text = review['review_text']
+                    # Escape markdown special characters
+                    review_text = review_text.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+                    if len(review_text) > 100:
+                        review_text = review_text[:97] + "..."
+                        
+                    # Add to message
+                    message += (
+                        f"*Issue {i}:* {priority_emoji} {categories_text}\n"
+                        f"Rating: {'⭐' * review['rating']}\n"
+                        f"_{review_text}_\n\n"
+                    )
+                
+                try:
+                    await processing_message.edit_text(message, parse_mode='Markdown')
+                except Exception as e:
+                    # If markdown parsing fails, send without formatting
+                    logger.error(f"Error with markdown formatting: {e}")
+                    simple_message = "🚨 High Priority Issues\n\n" + "\n".join([r['review_text'][:100] for r in limited_reviews])
+                    await processing_message.edit_text(simple_message)
+                return
+        
+        # Build the themes report
+        header = "🚨 *Action Plans for High Priority Issues*\n\n"
+        header += f"Found {len(action_plans)} issue themes:\n\n"
+        
+        try:
+            await processing_message.edit_text(header, parse_mode='Markdown')
+        except Exception as e:
+            logger.error(f"Error with header markdown: {e}")
+            await processing_message.edit_text("Action Plans for High Priority Issues:")
+        
+        # Send each action plan as a separate message to avoid length issues
+        for i, plan in enumerate(action_plans, 1):
+            title = plan['title']
+            summary = plan.get('summary', 'No summary available')
+            
+            # Handle action_steps - could be JSON string or list
+            action_steps = plan.get('action_steps', [])
+            if isinstance(action_steps, str):
+                try:
+                    action_steps = json.loads(action_steps)
+                except:
+                    # If parsing fails, treat as a single item
+                    action_steps = [action_steps]
+            
+            # Ensure proper escaping for markdown
+            title = title.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+            summary = summary.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+            
+            # Format action steps with proper escaping
+            steps_text = ""
+            for step in action_steps:
+                # Escape markdown special characters in each step
+                safe_step = str(step).replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+                steps_text += f"• {safe_step}\n"
+            
+            # Get user response with proper escaping
+            user_response = plan.get('user_response', 'No suggested response available')
+            user_response = user_response.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+            
+            review_count = plan.get('review_count', 0)
+            
+            # Try to get review samples from JSON if available
+            review_samples = []
+            if isinstance(plan.get('review_samples'), str):
+                try:
+                    review_samples = json.loads(plan.get('review_samples', '[]'))
+                except:
+                    review_samples = []
+            else:
+                review_samples = plan.get('review_samples', [])
+            
+            # Format sample reviews with proper escaping
+            samples_text = ""
+            if review_samples:
+                samples_text = "\n*Sample Reviews:*\n"
+                for j, sample in enumerate(review_samples, 1):
+                    # Escape markdown special characters
+                    safe_sample = str(sample).replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+                    if len(safe_sample) > 100:
+                        safe_sample = safe_sample[:97] + "..."
+                    samples_text += f"_{j}. \"{safe_sample}\"_\n"
+            
+            # Build the message
+            plan_message = (
+                f"*Theme {i}: {title}* ({review_count} reports)\n"
+                f"*Summary:* {summary}\n\n"
+                f"*Action Plan:*\n{steps_text}\n"
+                f"*Suggested User Response:*\n{user_response}\n"
+                f"{samples_text}"
+            )
+            
+            # Send message with fallback for formatting issues
+            try:
                 await update.message.reply_markdown(plan_message)
-            
+            except Exception as e:
+                # If markdown fails, try plain text
+                logger.error(f"Error with markdown in plan {i}: {e}")
+                simple_message = f"Theme {i}: {title}\n\nSummary: {summary}\n\nAction Plan:\n{steps_text}\n"
+                await update.message.reply_text(simple_message)
+        
+        # Final message with tips - use simpler formatting
+        tips_message = (
+            "💡 *Tips:*\n"
+            "• Action plans are automatically generated based on current issues\n"
+            "• To create workflow reference files, add text files to the 'workflows' directory\n"
+            "• Name workflow files to match common issues (e.g., 'login\\_problems.txt')\n"
+            "• Run /process regularly to keep analysis current"
+        )
+        
+        try:
+            await update.message.reply_markdown(tips_message)
+        except Exception as e:
+            # Fallback to plain text
+            logger.error(f"Error with markdown in tips: {e}")
+            simple_tips = "💡 Tips:\n• Action plans are automatically generated based on current issues\n• Run /process regularly to keep analysis current"
+            await update.message.reply_text(simple_tips)
+        
     except Exception as e:
         logger.error(f"Error in steps command: {e}")
         await update.message.reply_text(f"Error retrieving action plans: {str(e)}")

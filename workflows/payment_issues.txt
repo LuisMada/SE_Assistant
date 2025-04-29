@@ -1,0 +1,32 @@
+# Payment Issues Resolution Workflow
+
+## Issue Description
+Users reporting problems with payments, including failed transactions, double charges, missing credits/vouchers, or payment processing errors.
+
+## Internal Action Steps
+1. Check payment processor logs for transaction IDs and error codes
+2. Verify payment gateway service status and recent incidents
+3. Check for any bank/card declines and their specific error messages
+4. Review the user's transaction history for duplicate charges
+5. Verify wallet balance updates and transaction records
+6. Check for regional payment restrictions or currency conversion issues
+
+## Common Fixes
+- Retry failed transactions with transaction logging
+- Refund duplicate charges immediately
+- Reset payment session cache
+- Update payment method details if outdated
+- Escalate to payment processor for gateway issues
+- Add transaction compensations or credits for affected users
+
+## User Communication Guidelines
+- Be transparent about what happened without causing alarm
+- Provide clear information about refunds or retry processes
+- Tell users exactly what actions they need to take (if any)
+- Set realistic expectations for resolution timeframes
+- Offer alternative payment methods if applicable
+
+## Contact Points
+- Payment Team: payments@example.com
+- Finance Department: finance@example.com
+- Payment Gateway Support: support@paymentprocessor.com

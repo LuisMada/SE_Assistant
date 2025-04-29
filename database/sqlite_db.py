@@ -60,14 +60,16 @@ def setup_database():
         )
         ''')
         
-        # Create action_plans table
+        # Create action_plans table - Updated to support the new theme-based structure
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS action_plans (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            priority_level INTEGER,
-            category TEXT,
-            action_plan TEXT,
-            UNIQUE(priority_level, category)
+            title TEXT,
+            summary TEXT,
+            action_steps TEXT,  -- JSON array of steps
+            user_response TEXT,
+            review_count INTEGER,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
         )
         ''')
         

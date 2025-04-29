@@ -1,0 +1,30 @@
+# Login Problems Resolution Workflow
+
+## Issue Description
+Users are reporting problems with account login, including failed login attempts, password reset issues, or inability to access their accounts.
+
+## Internal Action Steps
+1. Check server logs for failed login attempts and error patterns
+2. Verify the authentication service is running properly
+3. Check for recent deployments that might have affected login functionality
+4. Test login on multiple devices and through different networks
+5. Review any third-party authentication services (Google, Facebook, etc.)
+6. Check database connection for user accounts
+
+## Common Fixes
+- Restart authentication microservice if errors are seen
+- Clear cache in Redis for affected users
+- Reset user sessions in the database
+- Temporarily disable any new authentication security measures for testing
+
+## User Communication Guidelines
+- Acknowledge the problem without blaming the user
+- Avoid technical details that aren't relevant to the user
+- Provide a clear timeline for resolution if available
+- Offer alternate methods to access important features if possible
+- Follow up when the issue is resolved
+
+## Contact Points
+- Backend Team: backend@example.com
+- Auth Service Owner: auth-team@example.com
+- User Support Lead: support-lead@example.com
