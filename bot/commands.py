@@ -2,8 +2,15 @@
 Implementation of Telegram bot commands
 """
 import logging
+import sqlite3
 from telegram import Update
 from telegram.ext import ContextTypes
+
+from utils.config import load_config
+from scraper.google_play_scraper import fetch_reviews
+from database.sqlite_db import get_unprocessed_reviews, get_recent_reviews, get_reviews_by_priority, DB_PATH
+from analysis.analyze_reviews import analyze_app_reviews
+from analysis.action_plans import get_action_plans
 
 logger = logging.getLogger(__name__)
 
@@ -94,6 +101,21 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ''', (one_week_ago,))
         priorities = cursor.fetchall()
         
+        # Get top categories
+        try:
+            cursor.execute('''
+            SELECT c.category, COUNT(*) FROM reviews r
+            JOIN categories c ON r.review_id = c.review_id
+            WHERE r.date_added >= ?
+            GROUP BY c.category
+            ORDER BY COUNT(*) DESC
+            LIMIT 5
+            ''', (one_week_ago,))
+            top_categories = cursor.fetchall()
+        except sqlite3.OperationalError:
+            # If categories table doesn't exist yet
+            top_categories = []
+        
         # Close connection
         conn.close()
         
@@ -114,16 +136,33 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if sentiments:
             report += "*Sentiment Distribution:*\n"
             for sentiment, count in sentiments:
+                emoji = "😊" if sentiment == "Positive" else "😐" if sentiment == "Neutral" else "😞"
                 percentage = (count / total_reviews) * 100
-                report += f"{sentiment}: {count} ({percentage:.1f}%)\n"
+                report += f"{emoji} {sentiment}: {count} ({percentage:.1f}%)\n"
+            report += "\n"
+        
+        # Add top categories if available
+        if top_categories:
+            report += "*Top Categories:*\n"
+            for category, count in top_categories:
+                percentage = (count / total_reviews) * 100
+                report += f"• {category}: {count} ({percentage:.1f}%)\n"
             report += "\n"
         
         # Add priority distribution if available
         if priorities:
             report += "*Priority Distribution:*\n"
+            priority_labels = {
+                1: "🔴 Critical", 
+                2: "🟠 High", 
+                3: "🟡 Medium", 
+                4: "🟢 Low", 
+                5: "🔵 Minimal"
+            }
             for priority, count in priorities:
                 percentage = (count / total_reviews) * 100
-                report += f"Priority {priority}: {count} ({percentage:.1f}%)\n"
+                label = priority_labels.get(priority, f"Priority {priority}")
+                report += f"{label}: {count} ({percentage:.1f}%)\n"
         
         # Add note if sentiment analysis hasn't been done yet
         if not sentiments:
@@ -168,10 +207,28 @@ async def reviews_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             
             # Format sentiment if available
             sentiment = review.get('sentiment', 'Not analyzed')
+            sentiment_emoji = ""
+            if sentiment == "Positive":
+                sentiment_emoji = "😊 "
+            elif sentiment == "Negative":
+                sentiment_emoji = "😞 "
+            elif sentiment == "Neutral":
+                sentiment_emoji = "😐 "
             
             # Format priority if available
             priority = review.get('priority_level')
-            priority_text = f"Priority: {priority}" if priority else "Priority: Not set"
+            if priority == 1:
+                priority_text = "🔴 Critical"
+            elif priority == 2:
+                priority_text = "🟠 High"
+            elif priority == 3:
+                priority_text = "🟡 Medium"
+            elif priority == 4:
+                priority_text = "🟢 Low"
+            elif priority == 5:
+                priority_text = "🔵 Minimal"
+            else:
+                priority_text = "Priority: Not set"
             
             # Format categories if available
             categories = review.get('categories', [])
@@ -185,7 +242,7 @@ async def reviews_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             # Build review entry
             review_entry = (
                 f"*{i}. {review['username']}* - {rating}\n"
-                f"_{sentiment}_ | {priority_text}\n"
+                f"{sentiment_emoji}_{sentiment}_ | {priority_text}\n"
                 f"Categories: {categories_text}\n"
                 f"{review_text}\n\n"
             )
@@ -204,42 +261,71 @@ async def reviews_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def steps_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Generate action plans for high-priority issues."""
-    from database.sqlite_db import get_reviews_by_priority
-    
     try:
-        # Get high priority reviews (priority level 1)
-        high_priority_reviews = get_reviews_by_priority(1, limit=5)
+        # Connect to database
+        conn = sqlite3.connect(DB_PATH)
         
-        if not high_priority_reviews:
-            await update.message.reply_text(
-                "No high-priority issues found. Either there are no critical issues, or reviews need to be processed first with /process."
-            )
-            return
-            
-        # For now, just list the high-priority reviews
-        # Action plan generation will be implemented in Phase 3 with OpenAI
-        message = f"🚨 *High Priority Issues*\n\n"
-        message += "_Note: Detailed action plans will be implemented in Phase 3 with OpenAI._\n\n"
+        # Get action plans
+        action_plans = get_action_plans(conn)
         
-        for i, review in enumerate(high_priority_reviews, 1):
-            # Format categories
-            categories = review.get('categories', [])
-            categories_text = ", ".join(categories) if categories else "Not categorized"
+        # If no action plans, get high priority reviews to give context
+        if not action_plans:
+            high_priority_reviews = get_reviews_by_priority(1, limit=5)
+            high_priority_reviews.extend(get_reviews_by_priority(2, limit=3))
             
-            # Format review preview
-            review_text = review['review_text']
-            if len(review_text) > 100:
-                review_text = review_text[:97] + "..."
+            if not high_priority_reviews:
+                await update.message.reply_text(
+                    "No high-priority issues found. Either there are no critical issues, or reviews need to be processed first with /process."
+                )
+                return
                 
-            # Add to message
-            message += (
-                f"*Issue {i}:* {categories_text}\n"
-                f"Rating: {'⭐' * review['rating']}\n"
-                f"_{review_text}_\n\n"
-            )
+            # Just list the high-priority reviews
+            message = f"🚨 *High Priority Issues*\n\n"
+            message += "No action plans have been generated yet. Use /process to analyze reviews and generate action plans.\n\n"
+            message += "Here are the current high priority issues:\n\n"
             
-        await update.message.reply_markdown(message)
-        
+            for i, review in enumerate(high_priority_reviews, 1):
+                # Format categories
+                categories = review.get('categories', [])
+                categories_text = ", ".join(categories) if categories else "Not categorized"
+                
+                # Priority emoji
+                priority_emoji = "🔴" if review.get('priority_level', 0) == 1 else "🟠"
+                
+                # Format review preview
+                review_text = review['review_text']
+                if len(review_text) > 100:
+                    review_text = review_text[:97] + "..."
+                    
+                # Add to message
+                message += (
+                    f"*Issue {i}:* {priority_emoji} {categories_text}\n"
+                    f"Rating: {'⭐' * review['rating']}\n"
+                    f"_{review_text}_\n\n"
+                )
+            
+            # Check message length and truncate if needed
+            if len(message) > 4000:  # Stay well under Telegram's 4096 limit
+                message = message[:3900] + "...\n\n_Message truncated due to length limit._"
+                
+            await update.message.reply_markdown(message)
+        else:
+            # Format and send action plans
+            header = f"🚨 *Action Plans for High Priority Issues*\n\n"
+            await update.message.reply_markdown(header)
+            
+            # Send each action plan as a separate message to avoid length issues
+            for i, plan in enumerate(action_plans, 1):
+                category = plan['category']
+                action_plan = plan['action_plan']
+                
+                # Truncate action plan if it's too long
+                if len(action_plan) > 3500:  # Leave room for category and formatting
+                    action_plan = action_plan[:3500] + "...\n\n_Action plan truncated due to length limit._"
+                
+                plan_message = f"*{i}. {category}*\n{action_plan}"
+                await update.message.reply_markdown(plan_message)
+            
     except Exception as e:
         logger.error(f"Error in steps command: {e}")
         await update.message.reply_text(f"Error retrieving action plans: {str(e)}")
@@ -250,7 +336,8 @@ async def process_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     from scraper.google_play_scraper import fetch_reviews
     from database.sqlite_db import get_unprocessed_reviews
     
-    await update.message.reply_text("🔍 Fetching new reviews from Google Play Store...")
+    # Indicate processing has started
+    processing_message = await update.message.reply_text("🔍 Fetching new reviews from Google Play Store...")
     
     # Load configuration
     config = load_config()
@@ -259,26 +346,65 @@ async def process_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     max_reviews = config['MAX_REVIEWS']
     
     if not app_id:
-        await update.message.reply_text("❌ Error: No app ID configured. Please set APP_ID in .env file.")
+        await processing_message.edit_text("❌ Error: No app ID configured. Please set APP_ID in .env file.")
         return
     
-    # Fetch reviews as a background task to avoid blocking the bot
+    # Fetch reviews
     try:
-        # For now, run synchronously since we haven't implemented proper async handling yet
         new_reviews_count = fetch_reviews(app_id, days, max_reviews)
         
         if new_reviews_count > 0:
-            await update.message.reply_text(f"✅ Successfully fetched {new_reviews_count} new reviews!")
+            await processing_message.edit_text(f"✅ Successfully fetched {new_reviews_count} new reviews!")
             
             # Get count of unprocessed reviews
             unprocessed_reviews = get_unprocessed_reviews()
-            await update.message.reply_text(
-                f"📊 You have {len(unprocessed_reviews)} reviews ready for analysis.\n"
-                f"Sentiment analysis will be implemented in Phase 3."
+            
+            # Check if OpenAI API key is configured
+            if not config.get('OPENAI_API_KEY'):
+                await update.message.reply_text(
+                    "⚠️ Warning: OpenAI API key not configured. Cannot proceed with analysis.\n"
+                    "Please set OPENAI_API_KEY in your .env file."
+                )
+                return
+                
+            # Indicate that analysis is starting
+            analysis_message = await update.message.reply_text(
+                f"🧠 Analyzing {len(unprocessed_reviews)} reviews...\n"
+                f"This may take a minute..."
             )
+            
+            # Run analysis
+            results = analyze_app_reviews(config)
+            
+            if results['success']:
+                # Format success message
+                reviews_processed = results['reviews_processed']
+                sentiment_processed = results.get('sentiment_processed', 0)
+                categories_processed = results.get('categories_processed', 0)
+                priorities_processed = results.get('priorities_processed', 0)
+                action_plans = results.get('action_plans_generated', 0)
+                processing_time = results.get('processing_time_seconds', 0)
+                
+                success_message = (
+                    f"✅ Analysis complete!\n\n"
+                    f"📊 *Analysis Results:*\n"
+                    f"• Reviews processed: {reviews_processed}\n"
+                    f"• Sentiment analyzed: {sentiment_processed}\n"
+                    f"• Categories assigned: {categories_processed}\n"
+                    f"• Priorities assigned: {priorities_processed}\n"
+                    f"• Action plans generated: {action_plans}\n"
+                    f"• Processing time: {processing_time} seconds\n\n"
+                    f"Use /reviews to see analyzed reviews or /report for a summary."
+                )
+                
+                await analysis_message.edit_text(success_message, parse_mode='Markdown')
+            else:
+                # Format error message
+                error = results.get('error', 'Unknown error')
+                await analysis_message.edit_text(f"❌ Error during analysis: {error}")
         else:
-            await update.message.reply_text("ℹ️ No new reviews found for the specified time period.")
+            await processing_message.edit_text("ℹ️ No new reviews found for the specified time period.")
     
     except Exception as e:
         logger.error(f"Error in process command: {e}")
-        await update.message.reply_text(f"❌ Error fetching reviews: {str(e)}")
+        await processing_message.edit_text(f"❌ Error fetching or processing reviews: {str(e)}")
