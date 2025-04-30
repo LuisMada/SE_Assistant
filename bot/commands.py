@@ -1,14 +1,15 @@
-
 """
 Implementation of Telegram bot commands
 """
 import logging
 import sqlite3
 import json
+import os
 from telegram import Update
 from telegram.ext import ContextTypes, filters
 
 from utils.config import load_config
+from utils.export import generate_reviews_csv
 from scraper.google_play_scraper import fetch_reviews
 from database.sqlite_db import get_unprocessed_reviews, get_recent_reviews, get_reviews_by_priority, DB_PATH
 from analysis.analyze_reviews import analyze_app_reviews
@@ -20,7 +21,7 @@ logger = logging.getLogger(__name__)
 __all__ = [
     'start_command', 'help_command', 'report_command', 
     'steps_command', 'process_command', 'reset_command', 
-    'handle_reset_confirmation', 'handle_theme_selection'
+    'handle_reset_confirmation', 'handle_theme_selection', 'export_command'
 ]
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -35,6 +36,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"• /process - Scrape and analyze new app reviews\n"
         f"• /report - Get a weekly summary of reviews\n"
         f"• /steps - Get action plans for high-priority issues\n"
+        f"• /export - Download reviews as a CSV file\n"
         f"• /help - Show this help message\n\n"
         f"To get started, use /process to collect and analyze app reviews."
     )
@@ -120,6 +122,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "*/process* - Scrape new reviews from Google Play, analyze sentiment, categorize, and assign priorities\n\n"
         "*/report* - Get a weekly summary of reviews including sentiment breakdown and common issues\n\n"
         "*/steps* - Generate action plans for high-priority issues\n\n"
+        "*/export* - Download analyzed reviews as a CSV file (last 7 days)\n\n"
         "*/reset* - Clear the database and start fresh (use with caution)\n\n"
         "*/help* - Show this help message"
     )
@@ -276,7 +279,8 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             for title, count in themes:
                 report += f"• {title} — {count} reviews\n"
             report += "\n"
-            report += "→ Use /steps to view action plans for these issues"
+            report += "→ Use /steps to view action plans for these issues\n"
+            report += "→ Use /export to download reviews as CSV"
         
         # Add note if sentiment analysis hasn't been done yet
         if not sentiments:
@@ -295,6 +299,39 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logger.error(f"Error in report command: {e}")
         await update.message.reply_text(f"Error generating report: {str(e)}")
 
+async def export_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Export analyzed reviews as a CSV file."""
+    try:
+        # Indicate processing has started
+        message = await update.message.reply_text("📤 Exporting latest analyzed reviews...")
+        
+        # Generate the CSV file
+        csv_file = generate_reviews_csv(DB_PATH)
+        
+        if not csv_file:
+            await message.edit_text(
+                "No reviews found to export. Use /process to fetch and analyze reviews first."
+            )
+            return
+        
+        # Send the file
+        with open(csv_file, 'rb') as file:
+            await context.bot.send_document(
+                chat_id=update.effective_chat.id,
+                document=file,
+                filename=os.path.basename(csv_file)
+            )
+            
+        # Delete the temporary file
+        try:
+            os.remove(csv_file)
+            logger.info(f"Temporary CSV file {csv_file} deleted successfully")
+        except Exception as e:
+            logger.error(f"Error deleting temporary CSV file: {e}")
+        
+    except Exception as e:
+        logger.error(f"Error in export command: {e}")
+        await update.message.reply_text(f"Error exporting reviews: {str(e)}")
 
 async def steps_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Generate action plans for high-priority issues and let user select a theme."""
@@ -507,7 +544,8 @@ async def handle_theme_selection(update: Update, context: ContextTypes.DEFAULT_T
             f"*Action Steps:*\n{steps_text}\n"
             f"*Suggested User Response:*\n{user_response}\n"
             f"{samples_text}\n\n"
-            f"Type /steps to see all themes again."
+            f"Type /steps to see all themes again.\n"
+            f"Use /export to download all reviews as CSV."
         )
         
         # Clear the selection flag
@@ -596,7 +634,7 @@ async def process_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     f"• Priorities assigned: {priorities_processed}\n"
                     f"• Action plans generated: {action_plans}\n"
                     f"• Processing time: {processing_time} seconds\n\n"
-                    f"Use /reviews to see analyzed reviews or /report for a summary."
+                    f"Use /report for a summary or /export to download reviews as CSV."
                 )
                 
                 await analysis_message.edit_text(success_message, parse_mode='Markdown')

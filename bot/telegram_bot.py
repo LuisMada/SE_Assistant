@@ -6,8 +6,8 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 from bot.commands import (
     start_command, help_command, report_command, 
-    steps_command, process_command, reset_command, handle_reset_confirmation,
-    handle_theme_selection
+    steps_command, process_command, reset_command, export_command,
+    handle_reset_confirmation, handle_theme_selection
 )
 
 logger = logging.getLogger(__name__)
@@ -24,6 +24,7 @@ def setup_bot(config):
     app.add_handler(CommandHandler("steps", steps_command))
     app.add_handler(CommandHandler("process", process_command))
     app.add_handler(CommandHandler("reset", reset_command))
+    app.add_handler(CommandHandler("export", export_command))
     
     # Create a handler for text messages
     text_handler = MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)
