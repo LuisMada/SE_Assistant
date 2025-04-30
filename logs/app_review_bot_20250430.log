@@ -416,3 +416,10 @@
 2025-04-30 17:10:32,661 - bot.telegram_bot - INFO - Telegram bot setup complete
 2025-04-30 17:10:32,661 - __main__ - INFO - Bot initialized, starting polling...
 2025-04-30 17:10:51,554 - bot.commands - INFO - User 5910794110 started the bot
+2025-04-30 17:23:01,750 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 17:23:01,750 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 17:23:01,753 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 17:23:01,753 - __main__ - INFO - Database initialized successfully
+2025-04-30 17:23:01,789 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 17:23:01,789 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 17:23:14,328 - bot.commands - INFO - User 5910794110 started the bot

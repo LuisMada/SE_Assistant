@@ -5,7 +5,7 @@ import logging
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 from bot.commands import (
-    start_command, help_command, report_command, reviews_command, 
+    start_command, help_command, report_command, 
     steps_command, process_command, reset_command, handle_reset_confirmation,
     handle_theme_selection
 )
@@ -21,7 +21,6 @@ def setup_bot(config):
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("report", report_command))
-    app.add_handler(CommandHandler("reviews", reviews_command))
     app.add_handler(CommandHandler("steps", steps_command))
     app.add_handler(CommandHandler("process", process_command))
     app.add_handler(CommandHandler("reset", reset_command))

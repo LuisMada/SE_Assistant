@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Ensure all handlers are exposed
 __all__ = [
-    'start_command', 'help_command', 'report_command', 'reviews_command',
+    'start_command', 'help_command', 'report_command', 
     'steps_command', 'process_command', 'reset_command', 
     'handle_reset_confirmation', 'handle_theme_selection'
 ]
@@ -34,7 +34,6 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"Here are the commands you can use:\n"
         f"• /process - Scrape and analyze new app reviews\n"
         f"• /report - Get a weekly summary of reviews\n"
-        f"• /reviews - List analyzed reviews with details\n"
         f"• /steps - Get action plans for high-priority issues\n"
         f"• /help - Show this help message\n\n"
         f"To get started, use /process to collect and analyze app reviews."
@@ -120,7 +119,6 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📋 *App Review Bot Commands*\n\n"
         "*/process* - Scrape new reviews from Google Play, analyze sentiment, categorize, and assign priorities\n\n"
         "*/report* - Get a weekly summary of reviews including sentiment breakdown and common issues\n\n"
-        "*/reviews* - List recently analyzed reviews with their sentiment, categories, and priorities\n\n"
         "*/steps* - Generate action plans for high-priority issues\n\n"
         "*/reset* - Clear the database and start fresh (use with caution)\n\n"
         "*/help* - Show this help message"
@@ -297,90 +295,6 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logger.error(f"Error in report command: {e}")
         await update.message.reply_text(f"Error generating report: {str(e)}")
 
-async def reviews_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Show a list of analyzed reviews."""
-    from database.sqlite_db import get_recent_reviews
-    
-    try:
-        # Get limit from arguments if provided, default to 5
-        limit = 5
-        if context.args and len(context.args) > 0:
-            try:
-                limit = int(context.args[0])
-                # Cap at reasonable limit to avoid message size issues
-                limit = min(limit, 10)
-            except ValueError:
-                pass
-        
-        # Get recent reviews
-        reviews = get_recent_reviews(limit)
-        
-        if not reviews:
-            await update.message.reply_text(
-                "No reviews found. Use /process to fetch reviews first."
-            )
-            return
-            
-        # Format and send review list
-        message = f"📱 *Recent {len(reviews)} Reviews*\n\n"
-        
-        for i, review in enumerate(reviews, 1):
-            # Format review details
-            rating = "⭐" * review['rating']
-            
-            # Format sentiment if available
-            sentiment = review.get('sentiment', 'Not analyzed')
-            sentiment_emoji = ""
-            if sentiment == "Positive":
-                sentiment_emoji = "😊 "
-            elif sentiment == "Negative":
-                sentiment_emoji = "😞 "
-            elif sentiment == "Neutral":
-                sentiment_emoji = "😐 "
-            
-            # Format priority if available
-            priority = review.get('priority_level')
-            if priority == 1:
-                priority_text = "🔴 Critical"
-            elif priority == 2:
-                priority_text = "🟠 High"
-            elif priority == 3:
-                priority_text = "🟡 Medium"
-            elif priority == 4:
-                priority_text = "🟢 Low"
-            elif priority == 5:
-                priority_text = "🔵 Minimal"
-            else:
-                priority_text = "Priority: Not set"
-            
-            # Format categories if available
-            categories = review.get('categories', [])
-            categories_text = ", ".join(categories) if categories else "Not categorized"
-            
-            # Add review text (truncate if too long)
-            review_text = review['review_text']
-            if len(review_text) > 100:
-                review_text = review_text[:97] + "..."
-                
-            # Build review entry
-            review_entry = (
-                f"*{i}. {review['username']}* - {rating}\n"
-                f"{sentiment_emoji}_{sentiment}_ | {priority_text}\n"
-                f"Categories: {categories_text}\n"
-                f"{review_text}\n\n"
-            )
-            
-            message += review_entry
-            
-        # Add note about sentiment analysis if not done yet
-        if all(review.get('sentiment') is None for review in reviews):
-            message += "\n_Note: Reviews have not been analyzed yet. Use /process to analyze them._"
-            
-        await update.message.reply_markdown(message)
-        
-    except Exception as e:
-        logger.error(f"Error in reviews command: {e}")
-        await update.message.reply_text(f"Error retrieving reviews: {str(e)}")
 
 async def steps_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Generate action plans for high-priority issues and let user select a theme."""
