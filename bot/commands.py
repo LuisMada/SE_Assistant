@@ -6,7 +6,7 @@ import logging
 import sqlite3
 import json
 from telegram import Update
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, filters
 
 from utils.config import load_config
 from scraper.google_play_scraper import fetch_reviews
@@ -15,6 +15,13 @@ from analysis.analyze_reviews import analyze_app_reviews
 from analysis.action_plans import get_action_plans, generate_action_plans, get_high_priority_reviews, save_action_plans
 
 logger = logging.getLogger(__name__)
+
+# Ensure all handlers are exposed
+__all__ = [
+    'start_command', 'help_command', 'report_command', 'reviews_command',
+    'steps_command', 'process_command', 'reset_command', 
+    'handle_reset_confirmation', 'handle_theme_selection'
+]
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Send a message when the command /start is issued."""
@@ -35,6 +42,78 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     await update.message.reply_html(welcome_message)
 
+async def reset_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Reset the database by clearing all tables."""
+    try:
+        # Ask for confirmation
+        confirm_message = await update.message.reply_text(
+            "⚠️ Are you sure you want to reset the database? "
+            "This will delete ALL reviews and analysis data.\n\n"
+            "Reply with 'yes' to confirm or 'no' to cancel."
+        )
+        
+        # Store the original user's ID to check replies
+        context.user_data['awaiting_reset_confirmation'] = True
+        context.user_data['reset_request_user_id'] = update.effective_user.id
+        
+    except Exception as e:
+        logger.error(f"Error in reset command: {e}")
+        await update.message.reply_text(f"Error: {str(e)}")
+
+# Add a message handler to process the confirmation
+async def handle_reset_confirmation(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle the confirmation for database reset."""
+    # Only process if we're awaiting confirmation
+    if not context.user_data.get('awaiting_reset_confirmation'):
+        return
+    
+    # Verify it's the same user who requested the reset
+    if update.effective_user.id != context.user_data.get('reset_request_user_id'):
+        return
+    
+    # Clear the flag
+    context.user_data['awaiting_reset_confirmation'] = False
+    
+    response = update.message.text.lower()
+    
+    if response == 'yes':
+        try:
+            # Connect to the database
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            
+            # Get a list of all tables
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+            tables = cursor.fetchall()
+            
+            # Clear all tables
+            for table in tables:
+                table_name = table[0]
+                if table_name != 'sqlite_sequence':  # Skip the SQLite internal table
+                    cursor.execute(f"DELETE FROM {table_name}")
+            
+            # Commit the changes
+            conn.commit()
+            conn.close()
+            
+            await update.message.reply_text(
+                "✅ Database has been reset. All reviews and analysis data have been deleted.\n"
+                "Use /process to fetch and analyze new reviews."
+            )
+            
+        except Exception as e:
+            logger.error(f"Error resetting database: {e}")
+            await update.message.reply_text(f"Error resetting database: {str(e)}")
+    
+    elif response == 'no':
+        await update.message.reply_text("Database reset cancelled.")
+    
+    else:
+        await update.message.reply_text(
+            "I didn't understand your response. Database reset cancelled.\n"
+            "Please reply with 'yes' or 'no' next time."
+        )
+
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Send a message when the command /help is issued."""
     help_message = (
@@ -43,6 +122,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "*/report* - Get a weekly summary of reviews including sentiment breakdown and common issues\n\n"
         "*/reviews* - List recently analyzed reviews with their sentiment, categories, and priorities\n\n"
         "*/steps* - Generate action plans for high-priority issues\n\n"
+        "*/reset* - Clear the database and start fresh (use with caution)\n\n"
         "*/help* - Show this help message"
     )
     
@@ -55,6 +135,11 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     from datetime import datetime, timedelta
     
     try:
+        # Indicate processing has started
+        processing_message = await update.message.reply_text(
+            "📊 Generating weekly report, please wait..."
+        )
+        
         # Connect to the database
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
@@ -70,12 +155,12 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         total_reviews = cursor.fetchone()[0]
         
         if total_reviews == 0:
-            await update.message.reply_text(
+            await processing_message.edit_text(
                 "No reviews found from the past week. Use /process to fetch reviews first."
             )
             return
             
-        # Get rating distribution
+        # Get rating distribution and calculate average
         cursor.execute('''
         SELECT rating, COUNT(*) FROM reviews 
         WHERE date_added >= ?
@@ -83,6 +168,10 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ORDER BY rating DESC
         ''', (one_week_ago,))
         ratings = cursor.fetchall()
+        
+        # Calculate average rating
+        total_rating_points = sum(rating * count for rating, count in ratings)
+        average_rating = total_rating_points / total_reviews if total_reviews > 0 else 0
         
         # Get sentiment distribution (if any reviews have been analyzed)
         cursor.execute('''
@@ -117,30 +206,46 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         except sqlite3.OperationalError:
             # If categories table doesn't exist yet
             top_categories = []
+            
+        # Get current action plan themes
+        try:
+            cursor.execute('''
+            SELECT title, review_count FROM action_plans
+            ORDER BY review_count DESC
+            ''')
+            themes = cursor.fetchall()
+        except sqlite3.OperationalError:
+            # If action_plans table doesn't exist or has issues
+            themes = []
         
         # Close connection
         conn.close()
         
-        # Format and send report
-        report = f"📊 *Weekly Review Report*\n\n"
-        report += f"Total reviews in the past week: {total_reviews}\n\n"
+        # Format and send report in the new format
+        report = f"📊 *Weekly Review Summary*\n"
+        report += f"📝 Total Reviews: {total_reviews}  \n"
+        report += f"⭐ Average Rating: {average_rating:.1f}  \n\n"
         
-        # Add rating distribution
-        report += "*Rating Distribution:*\n"
+        # Add rating breakdown
+        report += "*Rating Breakdown:*\n"
         for rating, count in ratings:
-            stars = "⭐" * rating
+            # Create aligned star ratings
+            stars = "⭐ " + str(rating) + " stars"
+            if rating == 1:
+                stars = "⭐ 1 star "  # Extra space for alignment
+                
             percentage = (count / total_reviews) * 100
-            report += f"{stars}: {count} ({percentage:.1f}%)\n"
+            report += f"{stars} — {count} ({percentage:.0f}%)\n"
         
         report += "\n"
         
         # Add sentiment distribution if available
         if sentiments:
-            report += "*Sentiment Distribution:*\n"
+            report += "*Sentiment:*\n"
             for sentiment, count in sentiments:
                 emoji = "😊" if sentiment == "Positive" else "😐" if sentiment == "Neutral" else "😞"
                 percentage = (count / total_reviews) * 100
-                report += f"{emoji} {sentiment}: {count} ({percentage:.1f}%)\n"
+                report += f"{emoji} {sentiment} — {count} ({percentage:.0f}%)\n"
             report += "\n"
         
         # Add top categories if available
@@ -148,29 +253,45 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             report += "*Top Categories:*\n"
             for category, count in top_categories:
                 percentage = (count / total_reviews) * 100
-                report += f"• {category}: {count} ({percentage:.1f}%)\n"
+                report += f"• {category} — {count} ({percentage:.0f}%)\n"
             report += "\n"
         
         # Add priority distribution if available
         if priorities:
-            report += "*Priority Distribution:*\n"
+            report += "*Priority Levels:*\n"
             priority_labels = {
-                1: "🔴 Critical", 
-                2: "🟠 High", 
-                3: "🟡 Medium", 
-                4: "🟢 Low", 
+                1: "🔴 Critical",
+                2: "🟠 High   ",
+                3: "🟡 Medium ",
+                4: "🟢 Low    ",
                 5: "🔵 Minimal"
             }
             for priority, count in priorities:
                 percentage = (count / total_reviews) * 100
                 label = priority_labels.get(priority, f"Priority {priority}")
-                report += f"{label}: {count} ({percentage:.1f}%)\n"
+                report += f"{label} — {count} ({percentage:.0f}%)\n"
+            report += "\n"
+            
+        # Add current themes if available
+        if themes:
+            report += "*Key Issue Themes:*\n"
+            for title, count in themes:
+                report += f"• {title} — {count} reviews\n"
+            report += "\n"
+            report += "→ Use /steps to view action plans for these issues"
         
         # Add note if sentiment analysis hasn't been done yet
         if not sentiments:
             report += "\n_Note: Sentiment analysis has not been performed yet. Use /process to analyze reviews._"
             
-        await update.message.reply_markdown(report)
+        # Try to send with Markdown, fallback to plain text if needed
+        try:
+            await processing_message.edit_text(report, parse_mode='Markdown')
+        except Exception as e:
+            logger.error(f"Error sending report with markdown: {e}")
+            # Send without formatting
+            plain_report = report.replace("*", "").replace("_", "")
+            await processing_message.edit_text(plain_report)
         
     except Exception as e:
         logger.error(f"Error in report command: {e}")
@@ -262,13 +383,13 @@ async def reviews_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"Error retrieving reviews: {str(e)}")
 
 async def steps_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Generate action plans for high-priority issues."""
+    """Generate action plans for high-priority issues and let user select a theme."""
     from utils.config import load_config
     
     try:
         # Indicate processing has started
         processing_message = await update.message.reply_text(
-            "🔍 Analyzing high-priority issues and generating action plans..."
+            "🔍 Analyzing high-priority issues and identifying themes..."
         )
         
         # Connect to database
@@ -277,7 +398,7 @@ async def steps_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # Get action plans from database
         action_plans = get_action_plans(conn)
         
-        # If no action plans, get high priority reviews to give context
+        # If no action plans, generate them
         if not action_plans:
             # Load configuration to get OpenAI API key
             config = load_config()
@@ -350,106 +471,152 @@ async def steps_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     await processing_message.edit_text(simple_message)
                 return
         
-        # Build the themes report
-        header = "🚨 *Action Plans for High Priority Issues*\n\n"
-        header += f"Found {len(action_plans)} issue themes:\n\n"
+        # Display the list of themes for selection
+        themes_list = "🚨 *Action Plan Themes Identified*\n\n"
+        themes_list += "Select a theme number to see the detailed action plan:\n\n"
         
-        try:
-            await processing_message.edit_text(header, parse_mode='Markdown')
-        except Exception as e:
-            logger.error(f"Error with header markdown: {e}")
-            await processing_message.edit_text("Action Plans for High Priority Issues:")
+        # Store action plans in user data for later reference
+        context.user_data['action_plans'] = action_plans
+        context.user_data['awaiting_theme_selection'] = True
+        context.user_data['theme_selection_user_id'] = update.effective_user.id
         
-        # Send each action plan as a separate message to avoid length issues
         for i, plan in enumerate(action_plans, 1):
             title = plan['title']
-            summary = plan.get('summary', 'No summary available')
-            
-            # Handle action_steps - could be JSON string or list
-            action_steps = plan.get('action_steps', [])
-            if isinstance(action_steps, str):
-                try:
-                    action_steps = json.loads(action_steps)
-                except:
-                    # If parsing fails, treat as a single item
-                    action_steps = [action_steps]
-            
-            # Ensure proper escaping for markdown
-            title = title.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
-            summary = summary.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
-            
-            # Format action steps with proper escaping
-            steps_text = ""
-            for step in action_steps:
-                # Escape markdown special characters in each step
-                safe_step = str(step).replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
-                steps_text += f"• {safe_step}\n"
-            
-            # Get user response with proper escaping
-            user_response = plan.get('user_response', 'No suggested response available')
-            user_response = user_response.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
-            
             review_count = plan.get('review_count', 0)
             
-            # Try to get review samples from JSON if available
-            review_samples = []
-            if isinstance(plan.get('review_samples'), str):
-                try:
-                    review_samples = json.loads(plan.get('review_samples', '[]'))
-                except:
-                    review_samples = []
-            else:
-                review_samples = plan.get('review_samples', [])
+            # Escape markdown special characters
+            safe_title = title.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
             
-            # Format sample reviews with proper escaping
-            samples_text = ""
-            if review_samples:
-                samples_text = "\n*Sample Reviews:*\n"
-                for j, sample in enumerate(review_samples, 1):
-                    # Escape markdown special characters
-                    safe_sample = str(sample).replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
-                    if len(safe_sample) > 100:
-                        safe_sample = safe_sample[:97] + "..."
-                    samples_text += f"_{j}. \"{safe_sample}\"_\n"
-            
-            # Build the message
-            plan_message = (
-                f"*Theme {i}: {title}* ({review_count} reports)\n"
-                f"*Summary:* {summary}\n\n"
-                f"*Action Plan:*\n{steps_text}\n"
-                f"*Suggested User Response:*\n{user_response}\n"
-                f"{samples_text}"
-            )
-            
-            # Send message with fallback for formatting issues
-            try:
-                await update.message.reply_markdown(plan_message)
-            except Exception as e:
-                # If markdown fails, try plain text
-                logger.error(f"Error with markdown in plan {i}: {e}")
-                simple_message = f"Theme {i}: {title}\n\nSummary: {summary}\n\nAction Plan:\n{steps_text}\n"
-                await update.message.reply_text(simple_message)
+            themes_list += f"*{i}.* {safe_title} ({review_count} reviews)\n"
         
-        # Final message with tips - use simpler formatting
-        tips_message = (
-            "💡 *Tips:*\n"
-            "• Action plans are automatically generated based on current issues\n"
-            "• To create workflow reference files, add text files to the 'workflows' directory\n"
-            "• Name workflow files to match common issues (e.g., 'login\\_problems.txt')\n"
-            "• Run /process regularly to keep analysis current"
-        )
+        themes_list += "\nReply with the number of the theme you want to explore."
         
         try:
-            await update.message.reply_markdown(tips_message)
+            await processing_message.edit_text(themes_list, parse_mode='Markdown')
         except Exception as e:
+            logger.error(f"Error with markdown in themes list: {e}")
             # Fallback to plain text
-            logger.error(f"Error with markdown in tips: {e}")
-            simple_tips = "💡 Tips:\n• Action plans are automatically generated based on current issues\n• Run /process regularly to keep analysis current"
-            await update.message.reply_text(simple_tips)
+            simple_list = "Action Plan Themes Identified:\n\n"
+            for i, plan in enumerate(action_plans, 1):
+                simple_list += f"{i}. {plan['title']} ({plan.get('review_count', 0)} reviews)\n"
+            simple_list += "\nReply with the number of the theme you want to explore."
+            await processing_message.edit_text(simple_list)
         
     except Exception as e:
         logger.error(f"Error in steps command: {e}")
         await update.message.reply_text(f"Error retrieving action plans: {str(e)}")
+
+async def handle_theme_selection(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle theme selection after the /steps command."""
+    # Only process if we're awaiting theme selection
+    if not context.user_data.get('awaiting_theme_selection'):
+        return
+    
+    # Verify it's the same user who requested the themes
+    if update.effective_user.id != context.user_data.get('theme_selection_user_id'):
+        return
+    
+    # Get the text and try to parse it as a number
+    selection_text = update.message.text.strip()
+    
+    try:
+        selection = int(selection_text)
+        
+        # Get the action plans from user data
+        action_plans = context.user_data.get('action_plans', [])
+        
+        # Check if the selection is valid
+        if selection < 1 or selection > len(action_plans):
+            await update.message.reply_text(
+                f"Please select a valid theme number between 1 and {len(action_plans)}."
+            )
+            return
+        
+        # Get the selected action plan
+        plan = action_plans[selection - 1]
+        
+        # Format the detailed action plan
+        title = plan['title']
+        summary = plan.get('summary', 'No summary available')
+        
+        # Handle action_steps - could be JSON string or list
+        action_steps = plan.get('action_steps', [])
+        if isinstance(action_steps, str):
+            try:
+                action_steps = json.loads(action_steps)
+            except:
+                # If parsing fails, treat as a single item
+                action_steps = [action_steps]
+        
+        # Ensure proper escaping for markdown
+        title = title.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+        summary = summary.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+        
+        # Format action steps with proper escaping
+        steps_text = ""
+        for step in action_steps:
+            # Escape markdown special characters in each step
+            safe_step = str(step).replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+            steps_text += f"• {safe_step}\n"
+        
+        # Get user response with proper escaping
+        user_response = plan.get('user_response', 'No suggested response available')
+        user_response = user_response.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+        
+        review_count = plan.get('review_count', 0)
+        
+        # Try to get review samples from JSON if available
+        review_samples = []
+        if isinstance(plan.get('review_samples'), str):
+            try:
+                review_samples = json.loads(plan.get('review_samples', '[]'))
+            except:
+                review_samples = []
+        else:
+            review_samples = plan.get('review_samples', [])
+        
+        # Format sample reviews with proper escaping
+        samples_text = ""
+        if review_samples:
+            samples_text = "\n*Sample Reviews:*\n"
+            for j, sample in enumerate(review_samples, 1):
+                # Escape markdown special characters
+                safe_sample = str(sample).replace("*", "\\*").replace("_", "\\_").replace("`", "\\`").replace("[", "\\[")
+                if len(safe_sample) > 100:
+                    safe_sample = safe_sample[:97] + "..."
+                samples_text += f"_{j}. \"{safe_sample}\"_\n"
+        
+        # Build the detailed message
+        detailed_message = (
+            f"*Action Plan for Theme: {title}* ({review_count} reports)\n\n"
+            f"*Summary:* {summary}\n\n"
+            f"*Action Steps:*\n{steps_text}\n"
+            f"*Suggested User Response:*\n{user_response}\n"
+            f"{samples_text}\n\n"
+            f"Type /steps to see all themes again."
+        )
+        
+        # Clear the selection flag
+        context.user_data['awaiting_theme_selection'] = False
+        
+        # Send the detailed action plan
+        try:
+            await update.message.reply_markdown(detailed_message)
+        except Exception as e:
+            # If markdown fails, try plain text
+            logger.error(f"Error with markdown in detailed plan: {e}")
+            simple_message = f"Action Plan for Theme: {title}\n\nSummary: {summary}\n\nAction Steps:\n{steps_text}\n"
+            await update.message.reply_text(simple_message)
+            
+    except ValueError:
+        await update.message.reply_text(
+            "Please enter a valid number to select a theme. Type /steps to see the list again."
+        )
+    except Exception as e:
+        logger.error(f"Error handling theme selection: {e}")
+        await update.message.reply_text(
+            "Something went wrong processing your selection. Type /steps to try again."
+        )
 
 async def process_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Process new app reviews."""

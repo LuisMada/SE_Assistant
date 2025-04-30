@@ -160,3 +160,259 @@
 2025-04-30 01:03:31,529 - __main__ - INFO - Database initialized successfully
 2025-04-30 01:03:31,562 - bot.telegram_bot - INFO - Telegram bot setup complete
 2025-04-30 01:03:31,562 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 02:24:13,231 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 02:24:13,232 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 02:24:13,234 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 02:24:13,234 - __main__ - INFO - Database initialized successfully
+2025-04-30 02:24:13,271 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 02:24:13,271 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 02:24:37,450 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 50)
+2025-04-30 02:24:37,451 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-23T02:24:37.451260
+2025-04-30 02:24:37,678 - scraper.google_play_scraper - INFO - Initial fetch: 50 reviews retrieved
+2025-04-30 02:24:37,716 - scraper.google_play_scraper - INFO - Review fetch complete. Total new reviews saved: 50
+2025-04-30 02:24:38,509 - analysis.analyze_reviews - INFO - Found 30 unprocessed reviews
+2025-04-30 02:24:38,519 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 04d84cd0-c24e-4829-9d95-05aa9f848d2f
+2025-04-30 02:24:41,715 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review c9567e25-e3f7-4ffe-8d32-71af9755f5ee
+2025-04-30 02:24:42,763 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review c361d4ce-7c8e-4f03-b1d4-be47e6f2e4a9
+2025-04-30 02:24:43,991 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 6518f550-f8bc-4ae0-8b4a-cb207236e1d2
+2025-04-30 02:24:45,194 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review fa277e69-2eb8-4b81-94b7-3cada4fccced
+2025-04-30 02:24:46,263 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 422c372c-bec3-47b6-9a14-772c8b89c1bc
+2025-04-30 02:24:47,478 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review cc46235c-6af4-49bf-b357-75d396476257
+2025-04-30 02:24:48,602 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review dae12744-06a3-4db6-9c74-869dfd638cb0
+2025-04-30 02:24:49,835 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ac2ac0ae-1a0b-40f7-8333-21330aae34be
+2025-04-30 02:24:50,916 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 9c8ec0da-5050-415b-92e4-c511103be777
+2025-04-30 02:24:52,084 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 02e5c3a6-5eca-43d0-8c2d-3bbb28972044
+2025-04-30 02:24:53,189 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 083c58cd-2d89-456e-919b-4eae17e43e96
+2025-04-30 02:24:54,369 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review fa329daa-f68f-4c26-93ba-9c7cd201e689
+2025-04-30 02:24:55,493 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ccb13729-9d65-4b1b-b6b6-0d6772db1a29
+2025-04-30 02:24:56,627 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 6cf2b7dd-0360-4d11-b4db-7362222d6bf1
+2025-04-30 02:24:57,816 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review a84e52fa-d4cd-40bd-b252-5e9a0ded6b38
+2025-04-30 02:24:59,186 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 718fd51f-1612-49ae-a708-97637d919d7e
+2025-04-30 02:25:00,250 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review fb20d6fb-5561-41ff-b1bb-3c2f2c7b7c54
+2025-04-30 02:25:01,338 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 847ac301-2868-4f3f-8795-e747a9a5ed66
+2025-04-30 02:25:02,426 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 4f3feea1-e78f-4349-b1d5-53c432e43f30
+2025-04-30 02:25:03,547 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 0781b942-6be3-4f0d-ba0e-6c2495f90d5e
+2025-04-30 02:25:04,644 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 8ac6c7c2-74ff-4a65-8428-1d7002b12658
+2025-04-30 02:25:05,804 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 9828f40c-6f36-427c-b49a-f5f8df42268d
+2025-04-30 02:25:06,931 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review c377ef6b-7d04-4df1-bcd6-a330833502e6
+2025-04-30 02:25:07,982 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 812f3ea8-db15-4b15-843b-7110fd38dcb7
+2025-04-30 02:25:09,078 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 5d7df6fe-2b32-4aa8-b803-4a5ae664e7ab
+2025-04-30 02:25:10,126 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 4aa308ba-0417-406a-b512-61e414b65e3c
+2025-04-30 02:25:11,330 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review dab96ca1-4c9f-4481-8df1-925682d9de7c
+2025-04-30 02:25:12,525 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 448fbaf0-2d7f-414e-8b95-d957d6833077
+2025-04-30 02:25:13,763 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 0fbf367b-e4d9-40e4-8069-483079824170
+2025-04-30 02:25:15,021 - analysis.sentiment_analysis - INFO - Completed sentiment analysis for 30 reviews
+2025-04-30 02:25:15,025 - analysis.analyze_reviews - INFO - Processed sentiment for 30 reviews, saved 30
+2025-04-30 02:25:15,047 - analysis.categorization - INFO - Categorizing review 04d84cd0-c24e-4829-9d95-05aa9f848d2f
+2025-04-30 02:25:16,378 - analysis.categorization - INFO - Categorizing review c9567e25-e3f7-4ffe-8d32-71af9755f5ee
+2025-04-30 02:25:17,480 - analysis.categorization - INFO - Categorizing review c361d4ce-7c8e-4f03-b1d4-be47e6f2e4a9
+2025-04-30 02:25:18,706 - analysis.categorization - INFO - Categorizing review 6518f550-f8bc-4ae0-8b4a-cb207236e1d2
+2025-04-30 02:25:20,168 - analysis.categorization - INFO - Categorizing review fa277e69-2eb8-4b81-94b7-3cada4fccced
+2025-04-30 02:25:21,442 - analysis.categorization - INFO - Categorizing review 422c372c-bec3-47b6-9a14-772c8b89c1bc
+2025-04-30 02:25:22,489 - analysis.categorization - INFO - Categorizing review cc46235c-6af4-49bf-b357-75d396476257
+2025-04-30 02:25:23,589 - analysis.categorization - INFO - Categorizing review dae12744-06a3-4db6-9c74-869dfd638cb0
+2025-04-30 02:25:24,754 - analysis.categorization - INFO - Categorizing review ac2ac0ae-1a0b-40f7-8333-21330aae34be
+2025-04-30 02:25:25,962 - analysis.categorization - INFO - Categorizing review 9c8ec0da-5050-415b-92e4-c511103be777
+2025-04-30 02:25:27,162 - analysis.categorization - INFO - Categorizing review 02e5c3a6-5eca-43d0-8c2d-3bbb28972044
+2025-04-30 02:25:28,563 - analysis.categorization - INFO - Categorizing review 083c58cd-2d89-456e-919b-4eae17e43e96
+2025-04-30 02:25:29,824 - analysis.categorization - INFO - Categorizing review fa329daa-f68f-4c26-93ba-9c7cd201e689
+2025-04-30 02:25:31,231 - analysis.categorization - INFO - Categorizing review ccb13729-9d65-4b1b-b6b6-0d6772db1a29
+2025-04-30 02:25:32,554 - analysis.categorization - INFO - Categorizing review 6cf2b7dd-0360-4d11-b4db-7362222d6bf1
+2025-04-30 02:25:33,817 - analysis.categorization - INFO - Categorizing review a84e52fa-d4cd-40bd-b252-5e9a0ded6b38
+2025-04-30 02:25:34,969 - analysis.categorization - INFO - Categorizing review 718fd51f-1612-49ae-a708-97637d919d7e
+2025-04-30 02:25:36,348 - analysis.categorization - INFO - Categorizing review fb20d6fb-5561-41ff-b1bb-3c2f2c7b7c54
+2025-04-30 02:25:37,708 - analysis.categorization - INFO - Categorizing review 847ac301-2868-4f3f-8795-e747a9a5ed66
+2025-04-30 02:25:38,818 - analysis.categorization - INFO - Categorizing review 4f3feea1-e78f-4349-b1d5-53c432e43f30
+2025-04-30 02:25:40,030 - analysis.categorization - INFO - Categorizing review 0781b942-6be3-4f0d-ba0e-6c2495f90d5e
+2025-04-30 02:25:41,317 - analysis.categorization - INFO - Categorizing review 8ac6c7c2-74ff-4a65-8428-1d7002b12658
+2025-04-30 02:25:42,869 - analysis.categorization - INFO - Categorizing review 9828f40c-6f36-427c-b49a-f5f8df42268d
+2025-04-30 02:25:44,245 - analysis.categorization - INFO - Categorizing review c377ef6b-7d04-4df1-bcd6-a330833502e6
+2025-04-30 02:25:45,313 - analysis.categorization - INFO - Categorizing review 812f3ea8-db15-4b15-843b-7110fd38dcb7
+2025-04-30 02:25:46,651 - analysis.categorization - INFO - Categorizing review 5d7df6fe-2b32-4aa8-b803-4a5ae664e7ab
+2025-04-30 02:25:47,891 - analysis.categorization - INFO - Categorizing review 4aa308ba-0417-406a-b512-61e414b65e3c
+2025-04-30 02:25:48,957 - analysis.categorization - INFO - Categorizing review dab96ca1-4c9f-4481-8df1-925682d9de7c
+2025-04-30 02:25:50,143 - analysis.categorization - INFO - Categorizing review 448fbaf0-2d7f-414e-8b95-d957d6833077
+2025-04-30 02:25:51,371 - analysis.categorization - INFO - Categorizing review 0fbf367b-e4d9-40e4-8069-483079824170
+2025-04-30 02:25:52,424 - analysis.categorization - INFO - Completed categorization for 30 reviews
+2025-04-30 02:25:52,431 - analysis.analyze_reviews - INFO - Processed categories for 30 reviews, saved 48 category associations
+2025-04-30 02:25:52,434 - analysis.priority_assignment - INFO - Assigned priorities to 30 reviews
+2025-04-30 02:25:52,434 - analysis.analyze_reviews - INFO - Assigned priorities to 30 reviews
+2025-04-30 02:25:52,436 - analysis.action_plans - INFO - Found 17 high priority reviews for action planning
+2025-04-30 02:26:00,010 - analysis.action_plans - INFO - Clustered reviews into 5 themes
+2025-04-30 02:26:00,011 - analysis.action_plans - INFO - Generating action plan for theme: Customer Support and Communication
+2025-04-30 02:26:02,529 - analysis.action_plans - INFO - Generating action plan for theme: Booking and Rider Availability
+2025-04-30 02:26:05,927 - analysis.action_plans - INFO - Generating action plan for theme: App Performance and Bugs
+2025-04-30 02:26:08,172 - analysis.action_plans - INFO - Generating action plan for theme: UI/UX and Ease of Use
+2025-04-30 02:26:10,692 - analysis.action_plans - INFO - Generating action plan for theme: General Feedback and Experience
+2025-04-30 02:26:16,944 - analysis.analyze_reviews - INFO - Generated 5 action plans
+2025-04-30 02:26:16,946 - analysis.action_plans - INFO - Saved 5 action plans to database
+2025-04-30 02:33:00,669 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 02:33:00,669 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 02:33:00,670 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 02:33:00,670 - __main__ - INFO - Database initialized successfully
+2025-04-30 02:34:12,152 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 02:34:12,153 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 02:34:12,155 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 02:34:12,155 - __main__ - INFO - Database initialized successfully
+2025-04-30 02:34:12,192 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 02:34:12,192 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 02:34:31,841 - scraper.google_play_scraper - INFO - Fetching reviews for app com.angkas.customer from the last 7 days (max: 50)
+2025-04-30 02:34:31,841 - scraper.google_play_scraper - INFO - Using cutoff date: 2025-04-23T02:34:31.841855
+2025-04-30 02:34:32,067 - scraper.google_play_scraper - INFO - Initial fetch: 50 reviews retrieved
+2025-04-30 02:34:32,118 - scraper.google_play_scraper - INFO - Review fetch complete. Total new reviews saved: 50
+2025-04-30 02:34:32,924 - analysis.analyze_reviews - INFO - Found 50 unprocessed reviews
+2025-04-30 02:34:32,933 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ba7fa799-88ae-4a9c-8dd7-14164a47d77d
+2025-04-30 02:34:34,116 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ffcd4bf4-a728-42c8-9d37-1ee9c9b2a9a0
+2025-04-30 02:34:35,064 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 7fd56ffc-54ce-4974-9c68-a913cdcd4fe6
+2025-04-30 02:34:36,276 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 20a9d207-2430-4a39-b9b1-b81da4609c81
+2025-04-30 02:34:37,510 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review a937cb82-3227-45df-b73c-06ed0377e08f
+2025-04-30 02:34:38,522 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review c4736a9d-b543-4f4c-9279-327b8ed64688
+2025-04-30 02:34:39,563 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 29dcd5c6-eaf5-4e26-b9b9-88ee31fd7d06
+2025-04-30 02:34:40,632 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 3ead8a03-0b55-4b3a-9cc0-03b9411bbeca
+2025-04-30 02:34:41,639 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 4898a4cb-5418-4565-b7be-f1e10eb1581a
+2025-04-30 02:34:43,092 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review d0af8a8e-067d-41a1-952e-e430a0767ec1
+2025-04-30 02:34:44,335 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review f60c3826-02d2-4438-a594-40355fed47ee
+2025-04-30 02:34:45,573 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 5283ee19-9de7-4015-a64f-32bc40abd9cf
+2025-04-30 02:34:46,795 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review f56b378a-cbdd-448f-9c02-7371c385520c
+2025-04-30 02:34:47,965 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 6938f7ed-0b33-4916-8223-2467d2f7cc38
+2025-04-30 02:34:49,295 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 8759f848-83c3-45a5-9b2a-4fe3125e723c
+2025-04-30 02:34:50,441 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 48d8235f-4f16-4ed5-a7cb-e7274dcc37d8
+2025-04-30 02:34:51,778 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 8557e1a3-785a-4620-816d-3b177c9cbafc
+2025-04-30 02:34:53,086 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 7e91e1d9-4dfb-4b46-a5a9-1cb341a7c8c1
+2025-04-30 02:34:54,353 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 1c63d9cb-bb4a-4576-b17f-b5845d331f14
+2025-04-30 02:34:55,473 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 10286a8b-ed8b-49b2-bcc4-6e4c322e6399
+2025-04-30 02:34:56,531 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 04d84cd0-c24e-4829-9d95-05aa9f848d2f
+2025-04-30 02:34:58,504 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review c9567e25-e3f7-4ffe-8d32-71af9755f5ee
+2025-04-30 02:34:59,611 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review c361d4ce-7c8e-4f03-b1d4-be47e6f2e4a9
+2025-04-30 02:35:00,685 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 6518f550-f8bc-4ae0-8b4a-cb207236e1d2
+2025-04-30 02:35:01,843 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review fa277e69-2eb8-4b81-94b7-3cada4fccced
+2025-04-30 02:35:03,116 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 422c372c-bec3-47b6-9a14-772c8b89c1bc
+2025-04-30 02:35:04,239 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review cc46235c-6af4-49bf-b357-75d396476257
+2025-04-30 02:35:05,300 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review dae12744-06a3-4db6-9c74-869dfd638cb0
+2025-04-30 02:35:06,421 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ac2ac0ae-1a0b-40f7-8333-21330aae34be
+2025-04-30 02:35:07,415 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 9c8ec0da-5050-415b-92e4-c511103be777
+2025-04-30 02:35:09,054 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 02e5c3a6-5eca-43d0-8c2d-3bbb28972044
+2025-04-30 02:35:10,186 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 083c58cd-2d89-456e-919b-4eae17e43e96
+2025-04-30 02:35:11,308 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review fa329daa-f68f-4c26-93ba-9c7cd201e689
+2025-04-30 02:35:12,502 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review ccb13729-9d65-4b1b-b6b6-0d6772db1a29
+2025-04-30 02:35:13,972 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 6cf2b7dd-0360-4d11-b4db-7362222d6bf1
+2025-04-30 02:35:15,156 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review a84e52fa-d4cd-40bd-b252-5e9a0ded6b38
+2025-04-30 02:35:16,221 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 718fd51f-1612-49ae-a708-97637d919d7e
+2025-04-30 02:35:17,354 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review fb20d6fb-5561-41ff-b1bb-3c2f2c7b7c54
+2025-04-30 02:35:18,388 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 847ac301-2868-4f3f-8795-e747a9a5ed66
+2025-04-30 02:35:19,474 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 4f3feea1-e78f-4349-b1d5-53c432e43f30
+2025-04-30 02:35:20,593 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 0781b942-6be3-4f0d-ba0e-6c2495f90d5e
+2025-04-30 02:35:21,669 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 8ac6c7c2-74ff-4a65-8428-1d7002b12658
+2025-04-30 02:35:22,828 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 9828f40c-6f36-427c-b49a-f5f8df42268d
+2025-04-30 02:35:24,047 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review c377ef6b-7d04-4df1-bcd6-a330833502e6
+2025-04-30 02:35:25,385 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 812f3ea8-db15-4b15-843b-7110fd38dcb7
+2025-04-30 02:35:26,415 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 5d7df6fe-2b32-4aa8-b803-4a5ae664e7ab
+2025-04-30 02:35:27,518 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 4aa308ba-0417-406a-b512-61e414b65e3c
+2025-04-30 02:35:28,766 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review dab96ca1-4c9f-4481-8df1-925682d9de7c
+2025-04-30 02:35:30,045 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 448fbaf0-2d7f-414e-8b95-d957d6833077
+2025-04-30 02:35:31,298 - analysis.sentiment_analysis - INFO - Analyzing sentiment for review 0fbf367b-e4d9-40e4-8069-483079824170
+2025-04-30 02:35:32,472 - analysis.sentiment_analysis - INFO - Completed sentiment analysis for 50 reviews
+2025-04-30 02:35:32,476 - analysis.analyze_reviews - INFO - Processed sentiment for 50 reviews, saved 50
+2025-04-30 02:35:32,497 - analysis.categorization - INFO - Categorizing review ba7fa799-88ae-4a9c-8dd7-14164a47d77d
+2025-04-30 02:35:33,711 - analysis.categorization - INFO - Categorizing review ffcd4bf4-a728-42c8-9d37-1ee9c9b2a9a0
+2025-04-30 02:35:35,271 - analysis.categorization - INFO - Categorizing review 7fd56ffc-54ce-4974-9c68-a913cdcd4fe6
+2025-04-30 02:35:36,703 - analysis.categorization - INFO - Categorizing review 20a9d207-2430-4a39-b9b1-b81da4609c81
+2025-04-30 02:35:37,930 - analysis.categorization - INFO - Categorizing review a937cb82-3227-45df-b73c-06ed0377e08f
+2025-04-30 02:35:39,093 - analysis.categorization - INFO - Categorizing review c4736a9d-b543-4f4c-9279-327b8ed64688
+2025-04-30 02:35:41,696 - analysis.categorization - INFO - Categorizing review 29dcd5c6-eaf5-4e26-b9b9-88ee31fd7d06
+2025-04-30 02:35:42,951 - analysis.categorization - INFO - Categorizing review 3ead8a03-0b55-4b3a-9cc0-03b9411bbeca
+2025-04-30 02:35:45,140 - analysis.categorization - INFO - Categorizing review 4898a4cb-5418-4565-b7be-f1e10eb1581a
+2025-04-30 02:35:46,264 - analysis.categorization - INFO - Categorizing review d0af8a8e-067d-41a1-952e-e430a0767ec1
+2025-04-30 02:35:48,339 - analysis.categorization - INFO - Categorizing review f60c3826-02d2-4438-a594-40355fed47ee
+2025-04-30 02:35:49,556 - analysis.categorization - INFO - Categorizing review 5283ee19-9de7-4015-a64f-32bc40abd9cf
+2025-04-30 02:35:51,246 - analysis.categorization - INFO - Categorizing review f56b378a-cbdd-448f-9c02-7371c385520c
+2025-04-30 02:35:52,440 - analysis.categorization - INFO - Categorizing review 6938f7ed-0b33-4916-8223-2467d2f7cc38
+2025-04-30 02:35:53,557 - analysis.categorization - INFO - Categorizing review 8759f848-83c3-45a5-9b2a-4fe3125e723c
+2025-04-30 02:35:54,750 - analysis.categorization - INFO - Categorizing review 48d8235f-4f16-4ed5-a7cb-e7274dcc37d8
+2025-04-30 02:35:55,934 - analysis.categorization - INFO - Categorizing review 8557e1a3-785a-4620-816d-3b177c9cbafc
+2025-04-30 02:35:57,006 - analysis.categorization - INFO - Categorizing review 7e91e1d9-4dfb-4b46-a5a9-1cb341a7c8c1
+2025-04-30 02:35:58,386 - analysis.categorization - INFO - Categorizing review 1c63d9cb-bb4a-4576-b17f-b5845d331f14
+2025-04-30 02:35:59,507 - analysis.categorization - INFO - Categorizing review 10286a8b-ed8b-49b2-bcc4-6e4c322e6399
+2025-04-30 02:36:00,631 - analysis.categorization - INFO - Categorizing review 04d84cd0-c24e-4829-9d95-05aa9f848d2f
+2025-04-30 02:36:01,777 - analysis.categorization - INFO - Categorizing review c9567e25-e3f7-4ffe-8d32-71af9755f5ee
+2025-04-30 02:36:02,858 - analysis.categorization - INFO - Categorizing review c361d4ce-7c8e-4f03-b1d4-be47e6f2e4a9
+2025-04-30 02:36:04,020 - analysis.categorization - INFO - Categorizing review 6518f550-f8bc-4ae0-8b4a-cb207236e1d2
+2025-04-30 02:36:05,124 - analysis.categorization - INFO - Categorizing review fa277e69-2eb8-4b81-94b7-3cada4fccced
+2025-04-30 02:36:06,343 - analysis.categorization - INFO - Categorizing review 422c372c-bec3-47b6-9a14-772c8b89c1bc
+2025-04-30 02:36:07,569 - analysis.categorization - INFO - Categorizing review cc46235c-6af4-49bf-b357-75d396476257
+2025-04-30 02:36:08,629 - analysis.categorization - INFO - Categorizing review dae12744-06a3-4db6-9c74-869dfd638cb0
+2025-04-30 02:36:09,805 - analysis.categorization - INFO - Categorizing review ac2ac0ae-1a0b-40f7-8333-21330aae34be
+2025-04-30 02:36:11,086 - analysis.categorization - INFO - Categorizing review 9c8ec0da-5050-415b-92e4-c511103be777
+2025-04-30 02:36:12,154 - analysis.categorization - INFO - Categorizing review 02e5c3a6-5eca-43d0-8c2d-3bbb28972044
+2025-04-30 02:36:13,778 - analysis.categorization - INFO - Categorizing review 083c58cd-2d89-456e-919b-4eae17e43e96
+2025-04-30 02:36:14,872 - analysis.categorization - INFO - Categorizing review fa329daa-f68f-4c26-93ba-9c7cd201e689
+2025-04-30 02:36:15,992 - analysis.categorization - INFO - Categorizing review ccb13729-9d65-4b1b-b6b6-0d6772db1a29
+2025-04-30 02:36:17,371 - analysis.categorization - INFO - Categorizing review 6cf2b7dd-0360-4d11-b4db-7362222d6bf1
+2025-04-30 02:36:18,586 - analysis.categorization - INFO - Categorizing review a84e52fa-d4cd-40bd-b252-5e9a0ded6b38
+2025-04-30 02:36:19,731 - analysis.categorization - INFO - Categorizing review 718fd51f-1612-49ae-a708-97637d919d7e
+2025-04-30 02:36:20,921 - analysis.categorization - INFO - Categorizing review fb20d6fb-5561-41ff-b1bb-3c2f2c7b7c54
+2025-04-30 02:36:23,233 - analysis.categorization - INFO - Categorizing review 847ac301-2868-4f3f-8795-e747a9a5ed66
+2025-04-30 02:36:24,294 - analysis.categorization - INFO - Categorizing review 4f3feea1-e78f-4349-b1d5-53c432e43f30
+2025-04-30 02:36:25,409 - analysis.categorization - INFO - Categorizing review 0781b942-6be3-4f0d-ba0e-6c2495f90d5e
+2025-04-30 02:36:26,767 - analysis.categorization - INFO - Categorizing review 8ac6c7c2-74ff-4a65-8428-1d7002b12658
+2025-04-30 02:36:27,894 - analysis.categorization - INFO - Categorizing review 9828f40c-6f36-427c-b49a-f5f8df42268d
+2025-04-30 02:36:28,965 - analysis.categorization - INFO - Categorizing review c377ef6b-7d04-4df1-bcd6-a330833502e6
+2025-04-30 02:36:30,156 - analysis.categorization - INFO - Categorizing review 812f3ea8-db15-4b15-843b-7110fd38dcb7
+2025-04-30 02:36:31,298 - analysis.categorization - INFO - Categorizing review 5d7df6fe-2b32-4aa8-b803-4a5ae664e7ab
+2025-04-30 02:36:32,613 - analysis.categorization - INFO - Categorizing review 4aa308ba-0417-406a-b512-61e414b65e3c
+2025-04-30 02:36:33,745 - analysis.categorization - INFO - Categorizing review dab96ca1-4c9f-4481-8df1-925682d9de7c
+2025-04-30 02:36:34,972 - analysis.categorization - INFO - Categorizing review 448fbaf0-2d7f-414e-8b95-d957d6833077
+2025-04-30 02:36:36,258 - analysis.categorization - INFO - Categorizing review 0fbf367b-e4d9-40e4-8069-483079824170
+2025-04-30 02:36:37,671 - analysis.categorization - INFO - Completed categorization for 50 reviews
+2025-04-30 02:36:37,675 - analysis.analyze_reviews - INFO - Processed categories for 50 reviews, saved 89 category associations
+2025-04-30 02:36:37,677 - analysis.priority_assignment - INFO - Assigned priorities to 50 reviews
+2025-04-30 02:36:37,678 - analysis.analyze_reviews - INFO - Assigned priorities to 50 reviews
+2025-04-30 02:36:37,679 - analysis.action_plans - INFO - Found 17 high priority reviews for action planning
+2025-04-30 02:36:43,840 - analysis.action_plans - INFO - Clustered reviews into 6 themes
+2025-04-30 02:36:43,842 - analysis.action_plans - INFO - Generating action plan for theme: App Loading and Uninstallation Issues
+2025-04-30 02:36:46,189 - analysis.action_plans - INFO - Generating action plan for theme: Booking and Rider Issues
+2025-04-30 02:36:49,063 - analysis.action_plans - INFO - Generating action plan for theme: Poor Customer Service and Discrimination
+2025-04-30 02:36:51,528 - analysis.action_plans - INFO - Generating action plan for theme: UI/UX and General Feedback
+2025-04-30 02:36:54,493 - analysis.action_plans - INFO - Generating action plan for theme: Promo Code and Pricing Issues
+2025-04-30 02:36:56,907 - analysis.action_plans - INFO - Generating action plan for theme: Lack of Drivers and Service Reliability
+2025-04-30 02:36:58,895 - analysis.analyze_reviews - INFO - Generated 6 action plans
+2025-04-30 02:36:58,897 - analysis.action_plans - INFO - Saved 6 action plans to database
+2025-04-30 11:47:57,284 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 11:47:57,285 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 11:47:57,287 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 11:47:57,287 - __main__ - INFO - Database initialized successfully
+2025-04-30 11:47:57,321 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 11:47:57,321 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 12:50:25,953 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 12:50:26,954 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 12:50:28,460 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 12:50:30,715 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 12:50:34,094 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 13:00:50,101 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 13:08:10,430 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 13:14:12,493 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 13:14:12,493 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 13:14:12,496 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 13:14:12,496 - __main__ - INFO - Database initialized successfully
+2025-04-30 13:14:12,530 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 13:14:12,530 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 13:39:12,092 - bot.telegram_bot - ERROR - Update None caused error httpx.ReadError: 
+2025-04-30 15:30:50,589 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 15:30:51,592 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 15:30:53,097 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 15:33:56,758 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 15:33:57,763 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 15:33:59,268 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 15:34:01,525 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 15:34:04,906 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 15:34:09,973 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 15:36:35,185 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 16:10:10,397 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 16:49:21,001 - bot.telegram_bot - ERROR - Update None caused error httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2025-04-30 17:10:32,626 - __main__ - INFO - Starting App Review Telegram Bot...
+2025-04-30 17:10:32,626 - __main__ - INFO - Configuration loaded successfully
+2025-04-30 17:10:32,627 - database.sqlite_db - INFO - Database tables created successfully
+2025-04-30 17:10:32,627 - __main__ - INFO - Database initialized successfully
+2025-04-30 17:10:32,661 - bot.telegram_bot - INFO - Telegram bot setup complete
+2025-04-30 17:10:32,661 - __main__ - INFO - Bot initialized, starting polling...
+2025-04-30 17:10:51,554 - bot.commands - INFO - User 5910794110 started the bot
